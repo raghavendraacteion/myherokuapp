@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Phone Changer</title>
+	<link rel="shortcut icon" type="image/png" href="/favicon.ico">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <style>
+        body {
+            padding-top: 60px;
+        }
+    </style>
+    <script>
+		window.onload = function() {
+			alert('nailed it');
+			$.ajax({
+				url: "/fetch",
+				method: "get",
+				contentType: "application/json; charset=utf-8",
+				dataType: "json",
+				success: function(data) {
+					alert(JSON.stringify(data.rows));
+				},
+				error: function(err) {
+					errorMessage.text(err.responseJSON.error);
+					error.show();
+				}
+			});
+		}; 
+	</script>
+	</head>
+<body>
+hiee<br/>
+	<span>hi this is for testing</span>
+</body>
+</html>
