@@ -13,7 +13,7 @@
         body {
             
 	    background-image: url("img/cartoon-graduation-of-happy-students.jpg");
-	    height: 100%;
+	    height: 70%;
 	    background-position: center;
 	    background-repeat: no-repeat;
 	    background-size: cover;
@@ -35,7 +35,7 @@
                 var lastName = $("#lastName").val();
                 var email = $("#email").val();
                 var phone = $("#phone").val();
-				var title = $("#title").val();
+		var title = $("#title").val();
                 if (firstName.length == 0 || lastName.length == 0 || email.length == 0 || phone.length == 0 || title.length == 0) {
                     errorMessage.text("All of the fields are required.");
                     error.show();
@@ -49,7 +49,7 @@
                             lastName: lastName,
                             email: email,
                             phone: phone,
-							title: title
+			    title: title
                         }),
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
@@ -58,7 +58,7 @@
                             $("#lastName").val("");
                             $("#email").val("");
                             $("#phone").val("");
-							$("#title").val("");
+			    $("#title").val("");
                             $("#messageMessage").text("Record updated!");
                             $("#message").show();
                         },
