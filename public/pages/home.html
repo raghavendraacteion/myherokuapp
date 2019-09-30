@@ -14,24 +14,9 @@
         }
     </style>
     <script>
-		window.onload = function() {
-			alert('nailed it');
-			$.ajax({
-				url: "/fetch",
-				method: "get",
-				contentType: "application/json; charset=utf-8",
-				dataType: "json",
-				success: function(data) {
-					alert(JSON.stringify(data.rows));
-				},
-				error: function(err) {
-					errorMessage.text(err.responseJSON.error);
-					error.show();
-				}
-			});
-		}; 
-	</script>
-	</head>
+	
+    </script>
+</head>
 <body>
 hiee<br/>
 	<span>hi this is for testing</span>
