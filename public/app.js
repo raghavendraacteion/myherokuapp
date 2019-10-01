@@ -9,6 +9,14 @@ sampleApp.config(['$routeProvider',
 			templateUrl: 'pages/login.html',
 			controller: 'mainController'
 		})
+	  	.when('/forgotpassword', {
+			templateUrl: 'pages/forgotpage.html',
+			controller: 'showforgotpagecontroller'
+		})
+	  	.when('/signup', {
+			templateUrl: 'pages/register.html',
+			controller: 'showsignuppagecontroller'
+		})
 		.when('/home', {
 			templateUrl: 'pages/home.html',
 			controller: 'showhomepagecontroller'
@@ -35,6 +43,18 @@ sampleApp.controller('showhomepagecontroller', function($scope, $routeParams) {
 });
 
 sampleApp.controller('mainController', function($scope, $routeParams) {
+
+	
+});
+
+
+sampleApp.controller('showforgotpagecontroller', function($scope, $routeParams) {
+
+	
+});
+
+
+sampleApp.controller('showsignuppagecontroller', function($scope, $routeParams) {
 
 	
 });
