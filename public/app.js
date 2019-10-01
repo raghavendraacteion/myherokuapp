@@ -6,7 +6,7 @@ sampleApp.config(['$routeProvider',
 	  
 	$routeProvider
 		.when('/', {
-			templateUrl: 'pages/phonechanger.html',
+			templateUrl: 'pages/login.html',
 			controller: 'mainController'
 		})
 		.when('/home', {
