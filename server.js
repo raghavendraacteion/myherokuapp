@@ -64,20 +64,18 @@ app.get('/performlogin', function(req, res) {
 });
 
 app.post('/signup', function(req, res) {
-	alert("hi");
-	var emaill = req.body.email.trim();
-	alert(emaill);
 	pg.connect(process.env.DATABASE_URL, function (err, conn, done) {
 	// watch for any connect issues
-	alert("hello");
 	if (err) console.log(err);
 		conn.query(
-			'SELECT Email, LastName FROM salesforce.Contact WHERE LOWER(Email) = LOWER(emaill)',
+			'SELECT Email, LastName FROM salesforce.Contact WHERE LOWER(Email) = LOWER($1)',
+			[req.body.email.trim()],
 			function(err, result) {
 				if (err) {
 					res.status(400).json({error: err.message});
 				}
 				else {
+					alert("hi");
 					alert(result.rows.length);
 				}
 			}
