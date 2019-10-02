@@ -52,8 +52,6 @@ app.get('/fetch', function(req, res) {
 					res.status(400).json({error: err.message});
 				}
 				else {
-					//alert(result.rowCount);
-					//alert('hi');
 					res.json(result);
 				}
 			}
@@ -66,7 +64,21 @@ app.get('/performlogin', function(req, res) {
 });
 
 app.post('/signup', function(req, res) {
-	
+	pg.connect(process.env.DATABASE_URL, function (err, conn, done) {
+	// watch for any connect issues
+	if (err) console.log(err);
+		conn.query(
+			'SELECT Email, LastName FROM salesforce.Contact WHERE LOWER(Email) = LOWER(req.body.email.trim())',
+			function(err, result) {
+				if (err) {
+					res.status(400).json({error: err.message});
+				}
+				else {
+					alert(result.rows.length);
+				}
+			}
+		);
+    	});
 });
 
 app.listen(app.get('port'), function () {
