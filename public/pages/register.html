@@ -50,6 +50,32 @@
 				errorMessage.text("Please enter required fields.");
 				error.show();
 			}
+			else if(!(password === cnfpassword)){
+				errorMessage.text("Your password and confirmation password do not match.");
+				error.show();
+			}
+			else {
+			    $.ajax({
+				url: "/signup",
+				method: "post",
+				data: JSON.stringify({
+				    firstName: firstName,
+				    lastName: lastName,
+				    email: email,
+				    phone: phone,
+				    password: password
+				}),
+				contentType: "application/json; charset=utf-8",
+				dataType: "json",
+				success: function(data) {
+				    
+				},
+				error: function(err) {
+				    errorMessage.text(err.responseJSON.error);
+				    error.show();
+				}
+			    })
+                	}
 		};
 	</script>
 	</head>
