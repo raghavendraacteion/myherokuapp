@@ -75,8 +75,7 @@ app.post('/signup', function(req, res) {
 					res.status(400).json({error: err.message});
 				}
 				else {
-					alert('hello');
-					alert(result.rowCount);
+					res.json(result);
 				}
 			}
 		);
