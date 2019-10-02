@@ -61,6 +61,14 @@ app.get('/fetch', function(req, res) {
     });
 });
 
+app.get('/performlogin', function(req, res) {
+	
+});
+
+app.post('/signup', function(req, res) {
+	
+});
+
 app.listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));
 });
