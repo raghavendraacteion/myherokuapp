@@ -45,7 +45,7 @@
 			var phone = $("#phone").val();
 			var password = $("#password").val();
 			var cnfpassword = $("#cnfpassword").val();
-			//alert(firstName); 
+			alert(email); 
 			if (password.length == 0 || lastName.length == 0 || email.length == 0 || cnfpassword.length == 0) {
 				errorMessage.text("Please enter required fields.");
 				error.show();
@@ -68,7 +68,7 @@
 				contentType: "application/json; charset=utf-8",
 				dataType: "json",
 				success: function(data) {
-				    
+				    alert(JSON.stringify(data.rows));
 				},
 				error: function(err) {
 				    errorMessage.text(err.responseJSON.error);
