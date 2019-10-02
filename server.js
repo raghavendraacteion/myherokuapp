@@ -68,15 +68,15 @@ app.post('/signup', function(req, res) {
 	// watch for any connect issues
 	if (err) console.log(err);
 		conn.query(
-			'SELECT Email, LastName FROM salesforce.Contact WHERE LOWER(Email) = LOWER($1)',
+			'UPDATE salesforce.Contact SET Email = $1 WHERE LOWER(Email) = LOWER($1)',
 			[req.body.email.trim()],
 			function(err, result) {
 				if (err) {
 					res.status(400).json({error: err.message});
 				}
 				else {
-					alert("hiee");
-					alert(result.rows.length);
+					alert("hello");
+					alert(result.rowCount);
 				}
 			}
 		);
