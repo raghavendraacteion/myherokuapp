@@ -8,49 +8,43 @@
 <title>Calvin University</title>
 <link rel="shortcut icon" type="image/png" href="/favicon.ico">
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script src="//code.angularjs.org/1.2.13/angular.js"></script>
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-	<style>
-        body {
-			background-image: url("img/cartoon-graduation-of-happy-students.jpg");
-			height: 100%;
-			background-position: center;
-			background-repeat: no-repeat;
-			background-size: cover;
-			background-position: 0px -10px;
-		 }
-		 
-		 a{
-			font-size:12px;
-			color:white;
-		 }
-		 a:hover {
-			color: blue;
-			text-decoration:underline;
-		 }
-    </style>
+ <style>
+    body {
+		background-image: url("img/cartoon-graduation-of-happy-students.jpg");
+		height: 100%;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: 0px -10px;
+	 }
+
+	 a{
+		font-size:12px;
+		color:white;
+	 }
+	 a:hover {
+		color: blue;
+		text-decoration:underline;
+	 }
+  </style>
 	
 	<script>
-		$(function() {
-			$("#registerform").submit(function(event) {
-				event.preventDefault();
-				var firstName = $("#firstName").val();
-                		var lastName = $("#lastName").val();
-                		var email = $("#email").val();
-                		var phone = $("#phone").val();
-				var password = $("#password").val();
-				var cnfpassword = $("#cnfpassword").val();
-				alert(firstName);
-			});
-		});
+		
+		
+		function signuppfunc() {
+		     alert("hi");
+		};
 	</script>
 	</head>
 
 <body>
-	<center>
-		<div class="container">
-		<form id="registerform">
+	
+<div class="container">
+	<form id="registerform">
+		<center>
 			<div style="margin-top:40px;background-color:#6D807A;width:400px;border-radius:3px;padding:30px;padding-top:60px;padding-bottom:60px;">
 				<div><img src="img/calvin logo.png" alt="Logo" title="" style="width:190px;height:65px;margin-bottom:10px;"/></div>
 				<span style="font-size:13px;color:white;">Join the community to receive personalized information and customer support.</span>
@@ -69,7 +63,7 @@
 				</div>
 				<div class="input-group" style="margin-bottom:10px;height:50px;">
 					<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-					<input id="firstName" type="text" class="form-control" name="firstName" placeholder="First Name" style="height:50px;">
+					<input id="firstName" type="text" class="form-control" name="firstName" placeholder="First Name,," style="height:50px;">
 				</div>
 				
 				<div class="input-group" style="margin-bottom:10px;height:50px;">
@@ -79,7 +73,7 @@
 				
 				<div class="input-group" style="margin-bottom:10px;height:50px;">
 					<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-					<input id="email" type="text" class="form-control" name="email" placeholder="Email*" style="height:50px;">
+					<input id="email" type="text" class="form-control" name="email" placeholder="Email*" style="height:50px;" required>
 				</div>
 				
 				<div class="input-group" style="margin-bottom:10px;height:50px;">
@@ -89,15 +83,15 @@
 				
 				<div class="input-group" style="margin-bottom:10px;height:50px;">
 					<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-					<input id="password" type="password" class="form-control" name="password" placeholder="Password*" style="height:50px;">
+					<input id="password" type="password" class="form-control" name="password" placeholder="Password*" style="height:50px;" required>
 				</div>
 				
 				<div class="input-group" style="margin-bottom:15px;height:50px;">
 					<span class="input-group-addon"><i class="glyphicon glyphicon-saved"></i></span>
-					<input id="cnfpassword" type="password" class="form-control" name="cnfpassword" placeholder="Confirm Password*" style="height:50px;">
+					<input id="cnfpassword" type="password" class="form-control" name="cnfpassword" placeholder="Confirm Password*" style="height:50px;" required>
 				</div>
 				
-				<button type="submit" class="btn btn-primary" style="width:100%;height:45px;font-weight:bold;font-size:15px;background-color:#0A32C6;margin-bottom:15px;">Sign Up</button>
+				<button type="button" onclick="signuppfunc()" class="btn btn-primary" style="width:100%;height:45px;font-weight:bold;font-size:15px;background-color:#0A32C6;margin-bottom:15px;">Sign Up</button>
 				<table style="width:100%;margin-bottom:10px;">
 					<tr>
 						<td style="width:60%;">
@@ -107,9 +101,10 @@
 				</table>
 				<span><a href="#">Already have an account?</a></span>
 			</div>
-		</form>
-		</div>
-	</center>
+		</center>
+	</form>
+</div>
+	
 </body>
 
 </html>
