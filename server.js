@@ -75,7 +75,24 @@ app.post('/signup', function(req, res) {
 					res.status(400).json({error: err.message});
 				}
 				else {
-					res.json(result.rowCount);
+					if(result.rowCount != 0)
+					{
+					     res.json('found');
+					}
+					else
+					{
+						conn.query('INSERT INTO salesforce.Contact (Phone, MobilePhone, FirstName, LastName, Email, Password__c) VALUES ($1, $2, $3, $4, $5, $6)',
+						[req.body.phone.trim(), req.body.phone.trim(), req.body.firstName.trim(), req.body.lastName.trim(), req.body.email.trim(), req.body.password.trim()],
+						function(err, result) {
+							done();
+							if (err) {
+								res.status(400).json({error: err.message});
+							}
+							else {
+								res.json('registered');
+							}
+						});
+					}
 				}
 			}
 		);
