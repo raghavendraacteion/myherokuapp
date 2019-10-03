@@ -60,7 +60,29 @@ app.get('/fetch', function(req, res) {
 });
 
 app.get('/performlogin', function(req, res) {
-	
+    pg.connect(process.env.DATABASE_URL, function (err, conn, done) {
+        // watch for any connect issues
+        if (err) console.log(err);
+		conn.query(
+			'SELECT Email, LastName FROM salesforce.Contact WHERE LOWER(Email) = LOWER($1) AND Password__c = $2',
+			[req.body.email.trim(), req.body.password.trim()],
+			function(err, result) {
+				if (err) {
+					res.status(400).json({error: err.message});
+				}
+				else {
+					if(result.rowCount != 0)
+					{
+					     res.json('found');
+					}
+					else
+					{
+					     res.json('notfound');
+					}
+				}
+			}
+		);
+    });
 });
 
 app.post('/signup', function(req, res) {
