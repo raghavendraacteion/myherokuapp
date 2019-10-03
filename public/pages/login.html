@@ -69,27 +69,32 @@
 				    {
 				         var recs = data.rows;
 					// alert(JSON.stringify(recs)); 
-					 alert(JSON.stringify(recs[0]));   
+					// alert(JSON.stringify(recs[0]));   
 					 //alert(JSON.stringify(recs[0].password__c));
 					// alert(JSON.stringify(recs[0].email));
-					    alert(recs[0].password_dup__c);
-					    alert(password);
-					 if(recs[0].password_dup__c == password)
+					//    alert(recs[0].password_dup__c);
+					//    alert(password);
+					/* if(recs[0].password_dup__c == password)
 					 {
 					    alert('equal');
 					 }
 					    if(JSON.stringify(recs[0].password_dup__c) == JSON.stringify(password))
 					    {
 						  alert('equal2');  
-					    }
-						 if(recs[0].password_dup__c === password)
-						 {
-						    alert('equal3');
-						 }
+					    } 
 					    if(JSON.stringify(recs[0].password_dup__c) === JSON.stringify(password))
 					    {
 						  alert('equal4');  
-					    }
+					    } */
+					  if(recs[0].password_dup__c === password)
+					  {
+						location.replace("#home");
+					  }
+					  else
+					  {
+						errorMessage.text("Your email or password is invalid, Please try again.");
+					 	error.show(); 	
+					  }
 					// location.replace("#home");
 				    }
 				},
