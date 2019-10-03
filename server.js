@@ -59,13 +59,13 @@ app.get('/fetch', function(req, res) {
     });
 });
 
-app.get('/performlogin', function(req, res) {
+app.post('/performlogin', function(req, res) {
     pg.connect(process.env.DATABASE_URL, function (err, conn, done) {
         // watch for any connect issues
         if (err) console.log(err);
 		conn.query(
-			'SELECT Email, LastName,Password__c FROM salesforce.Contact WHERE LOWER(Email) = LOWER($1)',
-			[req.body.email.trim()],
+			'SELECT Email, LastName FROM salesforce.Contact WHERE LOWER(Email) = LOWER($1) AND Password__c = $2',
+			[req.body.email.trim(), req.body.password.trim()],
 			function(err, result) {
 				if (err) {
 					res.status(400).json({error: err.message});
@@ -73,7 +73,7 @@ app.get('/performlogin', function(req, res) {
 				else {
 					if(result.rowCount != 0)
 					{
-					     res.json(result);
+					     res.json('found');
 					}
 					else
 					{
