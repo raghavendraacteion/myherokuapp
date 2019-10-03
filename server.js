@@ -64,7 +64,7 @@ app.post('/performlogin', function(req, res) {
         // watch for any connect issues
         if (err) console.log(err);
 		conn.query(
-			'SELECT Email, Password__c FROM salesforce.Contact WHERE LOWER(Email) = LOWER($1)',
+			'SELECT Email, Password__c, Password_Dup__c FROM salesforce.Contact WHERE LOWER(Email) = LOWER($1)',
 			[req.body.email.trim()],
 			function(err, result) {
 				if (err) {
@@ -103,8 +103,8 @@ app.post('/signup', function(req, res) {
 					}
 					else
 					{
-						conn.query('INSERT INTO salesforce.Contact (Phone, MobilePhone, FirstName, LastName, Email, Password__c) VALUES ($1, $2, $3, $4, $5, $6)',
-						[req.body.phone.trim(), req.body.phone.trim(), req.body.firstName.trim(), req.body.lastName.trim(), req.body.email.trim(), req.body.password.trim()],
+						conn.query('INSERT INTO salesforce.Contact (Phone, MobilePhone, FirstName, LastName, Email, Password__c, Password_Dup__c) VALUES ($1, $2, $3, $4, $5, $6, $7)',
+						[req.body.phone.trim(), req.body.phone.trim(), req.body.firstName.trim(), req.body.lastName.trim(), req.body.email.trim(), req.body.password.trim(), req.body.password.trim()],
 						function(err, result) {
 							done();
 							if (err) {
