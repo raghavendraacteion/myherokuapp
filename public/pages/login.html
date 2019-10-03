@@ -68,9 +68,14 @@
 				    else
 				    {
 				         var recs = data.rows;
-					 alert(JSON.stringify(recs)); 
-					 alert(JSON.stringify(recs[0]));   
-					 alert(JSON.stringify(recs[0].Email));
+					// alert(JSON.stringify(recs)); 
+					// alert(JSON.stringify(recs[0]));   
+					 alert(JSON.stringify(recs[0].password__c));
+					 alert(JSON.stringify(recs[0].email));
+					 if(JSON.stringify(recs[0].password__c) === password)
+					 {
+					    alert('equal');
+					 }
 					// location.replace("#home");
 				    }
 				},
