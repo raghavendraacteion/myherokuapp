@@ -59,7 +59,7 @@
 				contentType: "application/json; charset=utf-8",
 				dataType: "json",
 				success: function(data) {
-				  //  alert(JSON.stringify(data));
+				    alert(JSON.stringify(data));
 			            if(data === 'notfound')
 				    {
 				    	 errorMessage.text("Your email or password is invalid, Please try again.");
@@ -68,7 +68,7 @@
 				    else
 				    {
 				         var recs = data.rows;
-					 alert(recs[0].Password__c);   
+					 alert(recs);   
 					 location.replace("#home");
 				    }
 				},
