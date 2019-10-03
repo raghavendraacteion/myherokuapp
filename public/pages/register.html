@@ -68,7 +68,18 @@
 				contentType: "application/json; charset=utf-8",
 				dataType: "json",
 				success: function(data) {
+				    alert('hi');	
 				    alert(JSON.stringify(data));
+			            if(data === 'found')
+				    {
+				    	 errorMessage.text("Email already exists.");
+					 error.show();  
+				    }
+				    if(data === 'registered')
+				    {
+				         $("#messageMessage").text("Registered successfully!");
+                                         $("#message").show();
+				    }
 				},
 				error: function(err) {
 				    errorMessage.text(err.responseJSON.error);
