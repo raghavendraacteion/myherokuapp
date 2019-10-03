@@ -65,7 +65,7 @@ app.post('/performlogin', function(req, res) {
         if (err) console.log(err);
 		conn.query(
 			'SELECT Email, Password__c FROM salesforce.Contact WHERE LOWER(Email) = LOWER($1)',
-			[req.body.email.trim(), req.body.password.trim()],
+			[req.body.email.trim()],
 			function(err, result) {
 				if (err) {
 					res.status(400).json({error: err.message});
