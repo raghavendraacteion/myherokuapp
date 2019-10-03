@@ -79,7 +79,7 @@
 				    {
 				         $("#messageMessage").text("Registered successfully!");
                                          $("#message").show();
-					 location.replace("#")
+					 setTimeout(function(){ location.replace("#"); }, 3000);
 				    }
 				},
 				error: function(err) {
