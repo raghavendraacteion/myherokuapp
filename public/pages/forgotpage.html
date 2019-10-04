@@ -46,6 +46,11 @@
 			    errorMessage.text("Please enter email.");
 			    error.show();
 			}
+			else if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)))
+			{
+			    errorMessage.text("Please enter an invalid email address.");
+			    error.show();
+			}
 			else if(password.length == 0)
 			{
 			    errorMessage.text("Please enter password.");
