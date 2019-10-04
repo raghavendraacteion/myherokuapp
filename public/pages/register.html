@@ -50,6 +50,11 @@
 				errorMessage.text("Please enter required fields.");
 				error.show();
 			}
+			else if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)))
+			{
+			    errorMessage.text("Please enter an invalid email address.");
+			    error.show();
+			}
 			else if(!(password === cnfpassword)){
 				errorMessage.text("Your password and confirmation password do not match.");
 				error.show();
