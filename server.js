@@ -85,6 +85,45 @@ app.post('/performlogin', function(req, res) {
     });
 });
 
+
+app.post('/chngpassword', function(req, res) {
+    pg.connect(process.env.DATABASE_URL, function (err, conn, done) {
+        // watch for any connect issues
+        if (err) console.log(err);
+		conn.query(
+			'SELECT Email, Password__c, Password_Dup__c FROM salesforce.Contact WHERE LOWER(Email) = LOWER($1)',
+			[req.body.email.trim()],
+			function(err, result) {
+				if (err) {
+					res.status(400).json({error: err.message});
+				}
+				else {
+					if(result.rowCount != 0)
+					{
+					     conn.query(
+						'UPDATE salesforce.Contact SET Password__c = $2, Password_Dup__c = $2 WHERE LOWER(Email) = LOWER($1)',
+						[req.body.email.trim(), req.body.password.trim()],
+						function(err, result) {
+							done();
+							if (err) {
+								res.status(400).json({error: err.message});
+							}
+							else {
+								res.json('updated');
+							}
+					     });
+					}
+					else
+					{
+					     res.json('notfound');
+					}
+				}
+			}
+		);
+    });
+});
+
+
 app.post('/signup', function(req, res) {
 	pg.connect(process.env.DATABASE_URL, function (err, conn, done) {
 	// watch for any connect issues
