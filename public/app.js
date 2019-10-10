@@ -17,6 +17,10 @@ sampleApp.config(['$routeProvider',
 			templateUrl: 'pages/register.html',
 			controller: 'showsignuppagecontroller'
 		})
+	        .when('/slotbookingpage', {
+			templateUrl: 'pages/slot_booking_page.html',
+			controller: 'showslobookpageecontroller'
+		})
 		.when('/home', {
 			templateUrl: 'pages/home.html',
 			controller: 'showhomepagecontroller'
@@ -47,6 +51,10 @@ sampleApp.controller('mainController', function($scope, $routeParams) {
 	
 });
 
+sampleApp.controller('showslobookpageecontroller', function($scope, $routeParams) {
+
+	
+});
 
 sampleApp.controller('showforgotpagecontroller', function($scope, $routeParams) {
 
