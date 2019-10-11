@@ -17,7 +17,7 @@ sampleApp.config(['$routeProvider',
 			templateUrl: 'pages/register.html',
 			controller: 'showsignuppagecontroller'
 		})
-	        .when('/slotbookingpage', {
+	        .when('/slotbookingpage/:conid', {
 			templateUrl: 'pages/slot_booking_page.html',
 			controller: 'showslobookpageecontroller'
 		})
@@ -45,6 +45,11 @@ sampleApp.controller('mainController', function($scope, $routeParams) {
 
 sampleApp.controller('showslobookpageecontroller', function($scope, $routeParams) {
 	
+	var hmstrLink = "#home/" + $routeParams.conid;
+        var sltstrLink = "#slotbookingpage/" + $routeParams.conid;
+	document.getElementById("lgid").setAttribute("href",hmstrLink);
+	document.getElementById("hmid").setAttribute("href",hmstrLink);
+        document.getElementById("stid").setAttribute("href",sltstrLink);
 	//alert('nailed it');
 	$.ajax({
 		url: "/fetch",
