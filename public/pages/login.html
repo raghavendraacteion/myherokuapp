@@ -74,7 +74,7 @@
 				    {
 				         var recs = data.rows;
 					// alert(JSON.stringify(recs)); 
-					 alert(JSON.stringify(recs[0]));   
+					// alert(JSON.stringify(recs[0]));   
 					 //alert(JSON.stringify(recs[0].password__c));
 					// alert(JSON.stringify(recs[0].email));
 					//    alert(recs[0].password_dup__c);
@@ -93,7 +93,8 @@
 					    } */
 					  if(recs[0].password_dup__c === password)
 					  {
-						location.replace("#home");
+						var lgurl = "#home"+recs[0].sfid;
+						location.replace(lgurl);
 					  }
 					  else
 					  {
