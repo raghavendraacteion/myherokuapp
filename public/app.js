@@ -21,7 +21,7 @@ sampleApp.config(['$routeProvider',
 			templateUrl: 'pages/slot_booking_page.html',
 			controller: 'showslobookpageecontroller'
 		})
-		.when('/home', {
+		.when('/home/:conid', {
 			templateUrl: 'pages/home.html',
 			controller: 'showhomepagecontroller'
 		});
