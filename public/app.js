@@ -29,6 +29,21 @@ sampleApp.config(['$routeProvider',
 
 
 sampleApp.controller('showhomepagecontroller', function($scope, $routeParams) {
+	    
+	var hmstrLink = "#home/" + $routeParams.conid;
+        var sltstrLink = "#slotbookingpage/" + $routeParams.conid;
+	document.getElementById("lgid").setAttribute("href",hmstrLink);
+	document.getElementById("hmid").setAttribute("href",hmstrLink);
+        document.getElementById("stid").setAttribute("href",sltstrLink);
+
+});
+
+sampleApp.controller('mainController', function($scope, $routeParams) {
+
+	
+});
+
+sampleApp.controller('showslobookpageecontroller', function($scope, $routeParams) {
 	
 	//alert('nailed it');
 	$.ajax({
@@ -44,15 +59,6 @@ sampleApp.controller('showhomepagecontroller', function($scope, $routeParams) {
 			error.show();
 		}
 	});
-});
-
-sampleApp.controller('mainController', function($scope, $routeParams) {
-
-	
-});
-
-sampleApp.controller('showslobookpageecontroller', function($scope, $routeParams) {
-
 	
 });
 
