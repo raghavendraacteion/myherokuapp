@@ -62,11 +62,11 @@ sampleApp.controller('showslobookpageecontroller', function($scope, $routeParams
 		success: function(data) {
 			//alert(JSON.stringify(data.rows));
 			var rowss = data.rows;
-		        alert(rowss[0].slot_start_time__c);
+		        //alert(rowss[0].slot_start_time__c);
 			//alert(rowss);
 			$scope.slotss = rowss;
 			$scope.testd = rowss[0].slot_start_time__c;
-			alert($scope.slotss);
+			//alert($scope.slotss);
 		},
 		error: function(err) {
 			errorMessage.text(err.responseJSON.error);
