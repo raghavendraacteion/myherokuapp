@@ -44,6 +44,7 @@ sampleApp.controller('mainController', function($scope, $routeParams) {
 });
 
 sampleApp.controller('showslobookpageecontroller', function($scope, $routeParams) {
+	var stts = 'Confirmed';
 	var connid = $routeParams.conid;
 	var hmstrLink = "#home/" + $routeParams.conid;
         var sltstrLink = "#slotbookingpage/" + $routeParams.conid;
@@ -56,6 +57,7 @@ sampleApp.controller('showslobookpageecontroller', function($scope, $routeParams
 		method: "post",
 		data: JSON.stringify({
 			conid: connid,
+			sts: stts,
 		}),
 		contentType: "application/json; charset=utf-8",
 		dataType: "json",
