@@ -65,7 +65,8 @@ sampleApp.controller('showslobookpageecontroller', function($scope, $routeParams
 		        alert(rowss[0].slot_start_time__c);
 			//alert(rowss);
 			$scope.slotss = rowss;
-			//alert($scope.slotss);
+			$scope.testd = rowss[0].slot_start_time__c;
+			alert($scope.slotss);
 		},
 		error: function(err) {
 			errorMessage.text(err.responseJSON.error);
