@@ -61,7 +61,9 @@ sampleApp.controller('showslobookpageecontroller', function($scope, $routeParams
 		dataType: "json",
 		success: function(data) {
 			alert(JSON.stringify(data.rows));
-			$scope.slots = data.rows;
+			var rowss = data.rows;
+			$scope.slotss = rowss;
+			alert('ss');
 		},
 		error: function(err) {
 			errorMessage.text(err.responseJSON.error);
