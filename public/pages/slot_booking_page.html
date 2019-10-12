@@ -95,21 +95,21 @@
 							<div class="slds-scrollable--y" style="">
 								<table style="width:100%" class="slds-table slds-table_bordered slds-table_cell-buffer">
 									<tbody id="tbodyid">
-									<tr>
-										<td style="width:20%" scope="col"><div title="st nme">st nme</div></td>
-										<td style="width:20%" scope="col"><div>&nbsp;slot tme</div></td>
-										<td style="width:24%" scope="col"><div title="dept name">dept name</div></td>
+									<tr ng-repeat="slt in slots">
+										<td style="width:20%" scope="col"><div title="{{ slt.name }}">{{ slt.name }}</div></td>
+										<td style="width:20%" scope="col"><div>&nbsp;{{ slt.name }}</div></td>
+										<td style="width:24%" scope="col"><div title="{{ slt.name }}">{{ slt.name }}</div></td>
 										<td style="width:24%" scope="col">
-											<div title="deprt name">
+											<div title="{{ slt.name }}">
 												<div>
-													deprt name
+													{{ slt.name }}
 												</div>
 												<div>
 														-
 												</div>
 											</div>
 										</td>
-										<td style="width:12%" scope="col"><div title="status">status</div></td>    
+										<td style="width:12%" scope="col"><div title="{{ slt.name }}">{{ slt.name }}</div></td>    
 									</tr>
 								</table>
 							</div>
