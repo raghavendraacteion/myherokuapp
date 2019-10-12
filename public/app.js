@@ -60,10 +60,12 @@ sampleApp.controller('showslobookpageecontroller', function($scope, $routeParams
 		contentType: "application/json; charset=utf-8",
 		dataType: "json",
 		success: function(data) {
-			alert(JSON.stringify(data.rows));
+			//alert(JSON.stringify(data.rows));
 			var rowss = data.rows;
+			alert('22');
+			alert(rowss);
 			$scope.slotss = rowss;
-			alert('ss');
+			alert($scope.slotss);
 		},
 		error: function(err) {
 			errorMessage.text(err.responseJSON.error);
