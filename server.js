@@ -64,8 +64,8 @@ app.post('/fetchslots', function(req, res) {
         // watch for any connect issues
         if (err) console.log(err);
 		conn.query(
-			'SELECT Name, Id,sfid, Slot_End_Time__c, Slot_Start_Time__c, Status__c, Student__c FROM salesforce.Slot__c WHERE LOWER(Student__c) = LOWER($1)',
-			[req.body.conid.trim()],
+			'SELECT Name, Id,sfid, Slot_End_Time__c, Slot_Start_Time__c, Status__c, Student__c FROM salesforce.Slot__c WHERE LOWER(Student__c) = LOWER($1) AND LOWER(Status__c) = LOWER($2)',
+			[req.body.conid.trim(), req.body.sts.trim()],
 			function(err, result) {
 				if (err) {
 					res.status(400).json({error: err.message});
