@@ -66,6 +66,12 @@ sampleApp.controller('showslobookpageecontroller', function($scope, $routeParams
 			//alert(rowss);
 			$scope.slotss = rowss;
 			$scope.testd = rowss[0].slot_start_time__c;
+			var listItemsHtml = '';
+			for(var i=0; i < rowss.length; i++)
+			{
+			      listItemsHtml += ('<tr><td style="width:20%" ><div title="">'+rowss[i].name+'</div></td><td style="width:20%" ><div>&nbsp;'+rowss[i].slot_start_time__c+'</div></td><td style="width:24%" ><div title="">'+rowss[i].slot_start_time__c+'</div></td><td style="width:24%" ><div title="">'+rowss[i].slot_start_time__c+'</div></td><td style="width:12%" scope="col"><div title="">'+rowss[i].slot_start_time__c+'</div></td></tr>');
+			}
+			document.querySelector('#sltsdivv').innerHTML = listItemsHtml;
 			//alert($scope.slotss);
 		},
 		error: function(err) {
