@@ -59,6 +59,25 @@ app.get('/fetch', function(req, res) {
     });
 });
 
+app.post('/fetchslots', function(req, res) {
+    pg.connect(process.env.DATABASE_URL, function (err, conn, done) {
+        // watch for any connect issues
+        if (err) console.log(err);
+		conn.query(
+			'SELECT Name, Id,sfid, Slot_End_Time__c, Slot_Start_Time__c, Status__c, Student__c FROM salesforce.Slot__c WHERE LOWER(Student__c) = LOWER($1)',
+			[req.body.conid.trim()],
+			function(err, result) {
+				if (err) {
+					res.status(400).json({error: err.message});
+				}
+				else {
+					res.json(result);
+				}
+			}
+		);
+    });
+});
+
 app.post('/performlogin', function(req, res) {
     pg.connect(process.env.DATABASE_URL, function (err, conn, done) {
         // watch for any connect issues
