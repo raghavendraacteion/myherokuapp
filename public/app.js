@@ -71,7 +71,8 @@ sampleApp.controller('showslobookpageecontroller', function($scope, $routeParams
 			var listItemsHtml = '';
 			for(var i=0; i < rowss.length; i++)
 			{
-			      var schstarttime = new Date(rowss[i].slot_start_time__c);
+			      alert('1');
+				var schstarttime = new Date(rowss[i].slot_start_time__c);
 			      schstarttime.setHours( schstarttime.getHours() -7 );
 			      var schendtime = new Date(rowss[i].slot_end_time__c);
 			      schendtime.setHours( schendtime.getHours() -7 );
@@ -95,6 +96,7 @@ sampleApp.controller('showslobookpageecontroller', function($scope, $routeParams
 				  var temp = schstarttime.getHours()-12;
 				  sttm = temp+' PM'
 			      }
+				alert(sttm);
 			      if(schendtime.getHours() == 0)
 			      {
 				   endtm = '12 AM';  
