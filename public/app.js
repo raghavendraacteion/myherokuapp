@@ -44,7 +44,7 @@ sampleApp.controller('mainController', function($scope, $routeParams) {
 });
 
 sampleApp.controller('showslobookpageecontroller', function($scope, $routeParams) {
-	
+	var connid = $routeParams.conid;
 	var hmstrLink = "#home/" + $routeParams.conid;
         var sltstrLink = "#slotbookingpage/" + $routeParams.conid;
 	document.getElementById("lgid").setAttribute("href",hmstrLink);
@@ -52,12 +52,16 @@ sampleApp.controller('showslobookpageecontroller', function($scope, $routeParams
         document.getElementById("stid").setAttribute("href",sltstrLink);
 	//alert('nailed it');
 	$.ajax({
-		url: "/fetch",
-		method: "get",
+		url: "/fetchslots",
+		method: "post",
+		data: JSON.stringify({
+			conid: connid,
+		}),
 		contentType: "application/json; charset=utf-8",
 		dataType: "json",
 		success: function(data) {
-			//alert(JSON.stringify(data.rows));
+			alert(JSON.stringify(data.rows));
+			$scope.slots = data.rows;
 		},
 		error: function(err) {
 			errorMessage.text(err.responseJSON.error);
