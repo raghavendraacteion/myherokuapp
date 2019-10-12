@@ -90,17 +90,17 @@
 										</tr>
 									</thead>
 								</table>
-                            </div>
+                            				</div>
 							
 							<div class="slds-scrollable--y" style="">
 								<table style="width:100%" class="slds-table slds-table_bordered slds-table_cell-buffer">
 									<tbody id="tbodyid">
-									<tr ng-repeat="slt in slots">
-										<td style="width:20%" scope="col"><div title="{{ slt.name }}">{{ slt.name }}</div></td>
+									<tr ng-repeat="slt in slotss">
+										<td style="width:20%" scope="col"><div title="">{{ slt.name }}</div></td>
 										<td style="width:20%" scope="col"><div>&nbsp;{{ slt.name }}</div></td>
-										<td style="width:24%" scope="col"><div title="{{ slt.name }}">{{ slt.name }}</div></td>
+										<td style="width:24%" scope="col"><div title="">{{ slt.name }}</div></td>
 										<td style="width:24%" scope="col">
-											<div title="{{ slt.name }}">
+											<div title="">
 												<div>
 													{{ slt.name }}
 												</div>
@@ -109,10 +109,17 @@
 												</div>
 											</div>
 										</td>
-										<td style="width:12%" scope="col"><div title="{{ slt.name }}">{{ slt.name }}</div></td>    
+										<td style="width:12%" scope="col"><div title="">{{ slt.name }}</div></td>    
 									</tr>
 								</table>
 							</div>
+							
+							<table>
+							  <tr ng-repeat="x in slotss">
+							    <td>{{ x.name }}</td>
+							    <td>{{ x.slot_start_time__c }}</td>
+							  </tr>
+							</table>
 						</div>
 						
 					</div>
