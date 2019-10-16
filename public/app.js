@@ -71,17 +71,19 @@ sampleApp.controller('showslobookpageecontroller', function($scope, $routeParams
 			var listItemsHtml = '';
 			for(var i=0; i < rowss.length; i++)
 			{
-			      
 			      var schstarttime = new Date(rowss[i].slot_start_time__c);
 			      schstarttime.setHours( schstarttime.getHours() -7 );
-			      alert(schstarttime);
 			      var scstrstrng = schstarttime.toUTCString();
-			      alert(scstrstrng);
+			      var scstrlstt = scstrstrng.split(" ");
+			      alert(JSON.stringify(scstrlstt));
 			      var schendtime = new Date(rowss[i].slot_end_time__c);
 			      schendtime.setHours( schendtime.getHours() -7 );
+			      var schendstrng = schendtime.toUTCString();
+			      var schendstrnglst = schendstrng.split(" ");
+			      alert(JSON.stringify(schendstrnglst));
 			      var sttm;
 			      var endtm;
-			      var atslst = schstarttime.split("T");
+			     
 				alert('1');
 			      if(schstarttime.getHours() == 0)
 			      {
