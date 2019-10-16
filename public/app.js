@@ -74,6 +74,7 @@ sampleApp.controller('showslobookpageecontroller', function($scope, $routeParams
 			      alert('1');
 				var schstarttime = new Date(rowss[i].slot_start_time__c);
 			      schstarttime.setHours( schstarttime.getHours() -7 );
+				alert(schstarttime);
 			      var schendtime = new Date(rowss[i].slot_end_time__c);
 			      schendtime.setHours( schendtime.getHours() -7 );
 			      var sttm;
