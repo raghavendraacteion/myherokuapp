@@ -81,7 +81,8 @@ app.post('/fetchslots', function(req, res) {
 							}
 							else {
 								var aptrowss = result1.rows;
-								var depids = [];
+								res.json(aptrowss);
+							/*      var depids = [];
 								var subdepids = [];
 								var aptmap = new Map();
 								for(var i=0; i < aptrowss.length; i++)
@@ -90,8 +91,7 @@ app.post('/fetchslots', function(req, res) {
 									subdepids.push(aptrowss[i].sub_department__c);
 									aptmap.set(aptrowss[i].sfid,aptrowss[i]);
 								}
-								res.json(aptmap);
-								/*conn.query(
+								conn.query(
 									'SELECT Name, Id,sfid FROM salesforce.Department__c WHERE sfid IN $1',
 									[depids],
 									function(err2, result2) {
