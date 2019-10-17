@@ -89,20 +89,19 @@ app.post('/fetchslots', function(req, res) {
 									depids.push(aptrowss[i].department__c);
 									subdepids.push(aptrowss[i].sub_department__c);
 									aptmap.set(aptrowss[i].sfid,aptrowss[i]);
-									conn.query(
-										'SELECT Name, Id,sfid FROM salesforce.Department__c WHERE sfid IN $1',
-										[depids],
-										function(err2, result2) {
-											if (err2) {
-												res.status(400).json({error: err2.message});
-											}
-											else {
-												res.json(result2);
-												
-											}
-										}
-									);
 								}
+								conn.query(
+									'SELECT Name, Id,sfid FROM salesforce.Department__c WHERE sfid IN $1',
+									[depids],
+									function(err2, result2) {
+										if (err2) {
+											res.status(400).json({error: err2.message});
+										}
+										else {
+											res.json(result2);
+										}
+									}
+								);
 							}
 						}
 					);
