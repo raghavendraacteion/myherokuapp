@@ -90,7 +90,8 @@ app.post('/fetchslots', function(req, res) {
 									subdepids.push(aptrowss[i].sub_department__c);
 									aptmap.set(aptrowss[i].sfid,aptrowss[i]);
 								}
-								conn.query(
+								res.json(aptmap);
+								/*conn.query(
 									'SELECT Name, Id,sfid FROM salesforce.Department__c WHERE sfid IN $1',
 									[depids],
 									function(err2, result2) {
@@ -101,7 +102,7 @@ app.post('/fetchslots', function(req, res) {
 											res.json(result2);
 										}
 									}
-								);
+								); */
 							}
 						}
 					);
