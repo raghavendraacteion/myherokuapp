@@ -62,7 +62,7 @@ sampleApp.controller('showslobookpageecontroller', function($scope, $routeParams
 		contentType: "application/json; charset=utf-8",
 		dataType: "json",
 		success: function(data) {
-			alert(JSON.stringify(data.rows));
+			alert(JSON.stringify(data));
 		/*	var rowss = data.rows;
 			$scope.slotss = rowss;
 			$scope.testd = rowss[0].slot_start_time__c;
