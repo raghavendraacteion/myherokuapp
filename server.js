@@ -83,12 +83,13 @@ app.post('/fetchslots', function(req, res) {
 								var aptrowss = result1.rows;
 								var depids = [];
 								var subdepids = [];
-								var aptmap = new Map();
+								var aptmap = {};
 								for(var i=0; i < aptrowss.length; i++)
 								{
 									depids.push(aptrowss[i].department__c);
 									subdepids.push(aptrowss[i].sub_department__c);
-									aptmap.set(aptrowss[i].sfid,aptrowss[i]);
+									//aptmap.set(aptrowss[i].sfid,aptrowss[i]);
+									aptmap[aptrowss[i].sfid] = aptrowss[i];
 								}
 								res.json(aptmap);
 							/* 	conn.query(
