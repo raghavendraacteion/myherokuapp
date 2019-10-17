@@ -167,7 +167,7 @@ app.post('/fetchslots', function(req, res) {
 															    var temp = parseInt(schdendtmlstt[0])-12;
 															    endtm = temp+' PM'
 														        }
-														        var tttme = scstrlstt[1]+' '+scstrlstt[2]+', '+scstrlstt[3]+' '+sttm+' -- '+endtm;
+														        var tttme = scstrlstt[1]+' '+scstrlstt[2]+', '+scstrlstt[3]+' '+sttm+' to '+endtm;
 															var snglitem = {};
 															var tempaptbk = aptmapp[sltrowss[i].appointment_booking__c];
 															var tempdept = deptmapp[tempaptbk.department__c];
