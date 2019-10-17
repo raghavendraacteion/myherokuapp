@@ -71,7 +71,18 @@ app.post('/fetchslots', function(req, res) {
 					res.status(400).json({error: err.message});
 				}
 				else {
-					res.json(result);
+					conn.query(
+						'SELECT Name, Id,sfid, Department__c, Sub_Department__c, Scheduled_Start_Time__c, Status__c, Student__c FROM salesforce.Appointment_Booking__c WHERE LOWER(Student__c) = LOWER($1) ORDER BY Scheduled_Start_Time__c DESC',
+						[req.body.conid.trim()],
+						function(err1, result1) {
+							if (err1) {
+								res.status(400).json({error: err1.message});
+							}
+							else {
+								res.json(result1);
+							}
+						}
+					);
 				}
 			}
 		);
