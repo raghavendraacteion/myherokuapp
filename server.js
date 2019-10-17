@@ -92,8 +92,7 @@ app.post('/fetchslots', function(req, res) {
 								}
 								//res.json(aptmapp);
 							 	conn.query(
-									'SELECT Name, Id,sfid FROM salesforce.Department__c WHERE sfid IN $1',
-									[depids],
+									'SELECT Name, Id,sfid FROM salesforce.Department__c',
 									function(err2, result2) {
 										if (err2) {
 											res.status(400).json({error: err2.message});
