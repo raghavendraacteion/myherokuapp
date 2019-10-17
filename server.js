@@ -83,15 +83,15 @@ app.post('/fetchslots', function(req, res) {
 								var aptrowss = result1.rows;
 								var depids = [];
 								var subdepids = [];
-								var aptmap = {};
+								var aptmapp = {};
 								for(var i=0; i < aptrowss.length; i++)
 								{
 									depids.push(aptrowss[i].department__c);
 									subdepids.push(aptrowss[i].sub_department__c);
-									//aptmap.set(aptrowss[i].sfid,aptrowss[i]);
-									aptmap[aptrowss[i].sfid] = aptrowss[i];
+									//aptmapp.set(aptrowss[i].sfid,aptrowss[i]);
+									aptmapp[aptrowss[i].sfid] = aptrowss[i];
 								}
-								res.json(aptmap);
+								res.json(aptmapp);
 							/* 	conn.query(
 									'SELECT Name, Id,sfid FROM salesforce.Department__c WHERE sfid IN $1',
 									[depids],
