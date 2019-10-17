@@ -62,10 +62,8 @@ sampleApp.controller('showslobookpageecontroller', function($scope, $routeParams
 		contentType: "application/json; charset=utf-8",
 		dataType: "json",
 		success: function(data) {
-			//alert(JSON.stringify(data.rows));
-			var rowss = data.rows;
-		        //alert(rowss[0].slot_start_time__c);
-			//alert(rowss);
+			alert(JSON.stringify(data.rows));
+		/*	var rowss = data.rows;
 			$scope.slotss = rowss;
 			$scope.testd = rowss[0].slot_start_time__c;
 			var listItemsHtml = '';
@@ -84,7 +82,6 @@ sampleApp.controller('showslobookpageecontroller', function($scope, $routeParams
 			      var sttm;
 			      var endtm;
 			     
-				alert('1');
 			      if(parseInt(scstrlstrttmelst[0]) == 0)
 			      {
 				   sttm = '12 AM';  
@@ -124,8 +121,7 @@ sampleApp.controller('showslobookpageecontroller', function($scope, $routeParams
 				
 			      listItemsHtml += ('<tr><td style="width:20%" ><div title="">'+rowss[i].name+'</div></td><td style="width:20%" ><div>&nbsp;'+tttme+'</div></td><td style="width:24%" ><div title="">'+rowss[i].slot_start_time__c+'</div></td><td style="width:24%" ><div title="">'+rowss[i].slot_start_time__c+'</div></td><td style="width:12%" scope="col"><div title="">'+rowss[i].status__c+'</div></td></tr>');
 			}
-			document.querySelector('#sltsdivv').innerHTML = listItemsHtml;
-			//alert($scope.slotss);
+			document.querySelector('#sltsdivv').innerHTML = listItemsHtml;  */
 		},
 		error: function(err) {
 			errorMessage.text(err.responseJSON.error);
