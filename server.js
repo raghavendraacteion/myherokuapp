@@ -121,6 +121,53 @@ app.post('/fetchslots', function(req, res) {
 														//res.json(sltrowss);
 														for(var i=0; i < sltrowss.length; i++)
 														{
+															var schstarttime = new Date(sltrowss[i].slot_start_time__c);
+														        schstarttime.setHours( schstarttime.getHours() -7 );
+														        var scstrstrng = schstarttime.toUTCString();
+														        var scstrlstt = scstrstrng.split(" ");
+														        var scstrlstrttmelst = scstrlstt[4].split(":");
+														        var schendtime = new Date(sltrowss[i].slot_end_time__c);
+														        schendtime.setHours( schendtime.getHours() -7 );
+														        var schendstrng = schendtime.toUTCString();
+														        var schendstrnglst = schendstrng.split(" ");
+														        var schdendtmlstt = schendstrnglst[4].split(":");
+														        var sttm;
+														        var endtm;
+															if(parseInt(scstrlstrttmelst[0]) == 0)
+														        {
+															   sttm = '12 AM';  
+														        }
+														        else if(parseInt(scstrlstrttmelst[0]) < 12)
+														        {
+															   sttm = scstrlstrttmelst[0]+' AM';
+														        }
+														        else if(parseInt(scstrlstrttmelst[0]) == 12)
+														        {
+															    sttm = '12 PM';
+														        }
+														        else
+														        {
+															   var temp = parseInt(scstrlstrttmelst[0])-12;
+															   sttm = temp+' PM'
+														        }
+														        if(parseInt(schdendtmlstt[0]) == 0)
+														        {
+															   endtm = '12 AM';  
+														        }
+														        else if(parseInt(schdendtmlstt[0]) < 12)
+														        {
+															   endtm = schdendtmlstt[0]+' AM';
+														        }
+														        else if(parseInt(schdendtmlstt[0]) == 12)
+														        {
+															    endtm = '12 PM';
+														        }
+														        else
+														        {
+															    var temp = parseInt(schdendtmlstt[0])-12;
+															    endtm = temp+' PM'
+														        }
+														        var tttme = scstrlstt[1]+' '+scstrlstt[2]+', '+scstrlstt[3]+' '+sttm+' -- '+endtm;
 															var snglitem = {};
 															var tempaptbk = aptmapp[sltrowss[i].appointment_booking__c];
 															var tempdept = deptmapp[tempaptbk.department__c];
@@ -128,6 +175,8 @@ app.post('/fetchslots', function(req, res) {
 															snglitem.sltname = sltrowss[i].name;
 															snglitem.deptname = tempdept.name;
 															snglitem.subdeptname = tempsubdept.name;
+															snglitem.slttme = tttme;
+															snglitem.statuss = sltrowss[i].status__c;
 															rturnlstt.push(snglitem);
 														}
 														res.json(rturnlstt);  
