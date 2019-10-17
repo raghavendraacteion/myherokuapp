@@ -98,7 +98,23 @@ app.post('/fetchslots', function(req, res) {
 											res.status(400).json({error: err2.message});
 										}
 										else {
-											res.json(result2);
+											var deptrows = result2.rows;
+											var deptmapp = {};
+											for(var i=0; i < deptrows.length; i++)
+											{
+												deptmapp[deptrows[i].sfid] = deptrows[i];
+											}
+											conn.query(
+												'SELECT Name, Id,sfid FROM salesforce.Sub_Department__c',
+												function(err3, result3) {
+													if (err3) {
+														res.status(400).json({error: err3.message});
+													}
+													else {
+														res.json(result3);
+													}
+												}
+											);
 										}
 									}
 								); 
