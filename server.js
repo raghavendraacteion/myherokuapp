@@ -98,6 +98,7 @@ app.post('/fetchslots', function(req, res) {
 											}
 											else {
 												res.json(result2);
+												
 											}
 										}
 									);
