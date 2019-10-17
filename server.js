@@ -71,6 +71,7 @@ app.post('/fetchslots', function(req, res) {
 					res.status(400).json({error: err.message});
 				}
 				else {
+					var sltrowss = result.rows;
 					conn.query(
 						'SELECT Name, Id,sfid, Department__c, Sub_Department__c, Scheduled_Start_Time__c, Status__c, Student__c FROM salesforce.Appointment_Booking__c WHERE LOWER(Student__c) = LOWER($1) ORDER BY Scheduled_Start_Time__c DESC',
 						[req.body.conid.trim()],
@@ -79,7 +80,28 @@ app.post('/fetchslots', function(req, res) {
 								res.status(400).json({error: err1.message});
 							}
 							else {
-								res.json(result1);
+								var aptrowss = result1.rows;
+								var depids = [];
+								var subdepids = [];
+								var aptmap = new Map();
+								for(var i=0; i < aptrowss.length; i++)
+								{
+									depids.push(aptrowss[i].department__c);
+									subdepids.push(aptrowss[i].sub_department__c);
+									aptmap.set(aptrowss[i].sfid,aptrowss[i]);
+									conn.query(
+										'SELECT Name, Id,sfid FROM salesforce.Department__c WHERE sfid IN $1',
+										[depids],
+										function(err2, result2) {
+											if (err2) {
+												res.status(400).json({error: err2.message});
+											}
+											else {
+												res.json(result2);
+											}
+										}
+									);
+								}
 							}
 						}
 					);
