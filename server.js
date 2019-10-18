@@ -118,8 +118,8 @@ app.post('/fetchslots', function(req, res) {
 														{
 															subdeptmapp[subdeptrows[i].sfid] = subdeptrows[i];
 														}
-														res.json(aptmapp);
-													/*	for(var i=0; i < sltrowss.length; i++)
+														//res.json(aptmapp);
+														for(var i=0; i < sltrowss.length; i++)
 														{
 															var schstarttime = new Date(sltrowss[i].slot_start_time__c);
 														        schstarttime.setHours( schstarttime.getHours() -7 );
@@ -175,9 +175,11 @@ app.post('/fetchslots', function(req, res) {
 															snglitem.sltname = sltnmeee[0];
 															snglitem.deptname = tempdept.name;
 															var tmpsubdept = tempaptbk.sub_department__c;
+															
 															if(tmpsubdept === null)
 															{
 																snglitem.subdeptname = '-';
+																res.json(tmpsubdept);
 															}
 															else
 															{
@@ -188,7 +190,7 @@ app.post('/fetchslots', function(req, res) {
 															snglitem.statuss = sltrowss[i].status__c;
 															rturnlstt.push(snglitem);
 														}
-														res.json(rturnlstt);  */
+														res.json(rturnlstt);  
 													}
 												}
 											);
