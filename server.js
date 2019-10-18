@@ -175,7 +175,7 @@ app.post('/fetchslots', function(req, res) {
 															var sltnmeee = tempsltnme.split("_");
 															snglitem.sltname = sltnmeee[0];
 															snglitem.deptname = tempdept.name;
-															if (tempaptbk.sub_department__c === null) {
+															if (tempaptbk.sub_department__c == undefined) {
 															{
 																snglitem.subdeptname = '-';
 															} 
