@@ -50,6 +50,7 @@
 	  padding: 10px 12px;
 	  text-decoration: none;
 	  display: block;
+	  font-size:14px;
 	}
 
 	.dropdown-content a:hover {background-color: #f1f1f1;font-size:14px;}
@@ -68,7 +69,7 @@
 </head>
 <body>
 	
-  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="border-bottom:2px solid black;width:100%;">
   
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <a class="navbar-brand" href="#home" id="lgid">
@@ -85,7 +86,9 @@
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <div class="dropdown" style="float:right;">
-	      <button class="dropbtn"><span style="font-size:11px;">user</span><br/>Right</button>
+	      <button class="dropbtn"><span style="font-size:11px;">user</span><br/>
+		      Right
+	      </button>
 		<div class="dropdown-content">
 			<a href="#">Logout</a>
 		</div>
