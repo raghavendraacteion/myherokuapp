@@ -174,7 +174,7 @@ app.post('/fetchslots', function(req, res) {
 															//var sltnmeee = sltrowss[i].name.split("_");
 															snglitem.sltname = sltrowss[i].name;
 															snglitem.deptname = tempdept.name;
-															if (tempaptbk.sub_department__c !== undefined) {
+														/*	if (tempaptbk.sub_department__c !== undefined) {
 															{
 																var tempsubdept = subdeptmapp[tempaptbk.sub_department__c];
 																snglitem.subdeptname = tempsubdept.name;
@@ -182,7 +182,9 @@ app.post('/fetchslots', function(req, res) {
 															else
 															{
 																snglitem.subdeptname = '-';
-															}
+															}  */
+															var tempsubdept = subdeptmapp[tempaptbk.sub_department__c];
+															snglitem.subdeptname = tempsubdept.name;
 															snglitem.slttme = tttme;
 															snglitem.statuss = sltrowss[i].status__c;
 															rturnlstt.push(snglitem);
