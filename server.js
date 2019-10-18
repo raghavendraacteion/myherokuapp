@@ -171,11 +171,18 @@ app.post('/fetchslots', function(req, res) {
 															var snglitem = {};
 															var tempaptbk = aptmapp[sltrowss[i].appointment_booking__c];
 															var tempdept = deptmapp[tempaptbk.department__c];
-															var tempsubdept = subdeptmapp[tempaptbk.sub_department__c];
 															var sltnmeee = sltrowss[i].name("_");
 															snglitem.sltname = sltnmeee[0];
 															snglitem.deptname = tempdept.name;
-															snglitem.subdeptname = tempsubdept.name;
+															if(tempaptbk.sub_department__c.length == 0)
+															{
+																snglitem.subdeptname = '-';
+															}
+															else
+															{
+																var tempsubdept = subdeptmapp[tempaptbk.sub_department__c];
+																snglitem.subdeptname = tempsubdept.name;
+															}
 															snglitem.slttme = tttme;
 															snglitem.statuss = sltrowss[i].status__c;
 															rturnlstt.push(snglitem);
