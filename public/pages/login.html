@@ -64,7 +64,7 @@
 				contentType: "application/json; charset=utf-8",
 				dataType: "json",
 				success: function(data) {
-				   // alert(JSON.stringify(data));
+				    alert(JSON.stringify(data));
 			            if(data === 'notfound')
 				    {
 				    	 errorMessage.text("Your email or password is invalid, Please try again.");
@@ -73,35 +73,16 @@
 				    else
 				    {
 				         var recs = data.rows;
-					// alert(JSON.stringify(recs)); 
-					// alert(JSON.stringify(recs[0]));   
-					 //alert(JSON.stringify(recs[0].password__c));
-					// alert(JSON.stringify(recs[0].email));
-					//    alert(recs[0].password_dup__c);
-					//    alert(password);
-					/* if(recs[0].password_dup__c == password)
+					 if(recs[0].password_dup__c === password)
 					 {
-					    alert('equal');
+					      var lgurl = "#home/"+recs[0].sfid;
+					      location.replace(lgurl);
 					 }
-					    if(JSON.stringify(recs[0].password_dup__c) == JSON.stringify(password))
-					    {
-						  alert('equal2');  
-					    } 
-					    if(JSON.stringify(recs[0].password_dup__c) === JSON.stringify(password))
-					    {
-						  alert('equal4');  
-					    } */
-					  if(recs[0].password_dup__c === password)
-					  {
-						var lgurl = "#home/"+recs[0].sfid;
-						location.replace(lgurl);
-					  }
-					  else
-					  {
-						errorMessage.text("Your email or password is invalid, Please try again.");
-					 	error.show(); 	
-					  }
-					// location.replace("#home");
+					 else
+					 {
+					      errorMessage.text("Your email or password is invalid, Please try again.");
+					      error.show(); 	
+					 }
 				    }
 				},
 				error: function(err) {
