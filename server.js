@@ -173,7 +173,7 @@ app.post('/fetchslots', function(req, res) {
 															var tempdept = deptmapp[tempaptbk.department__c];
 															var tempsltnme = sltrowss[i].name;
 															var sltnmeee = tempsltnme.split("_");
-															snglitem.sltname = sltnmeee;
+															snglitem.sltname = sltnmeee[0];
 															snglitem.deptname = tempdept.name;
 														/*	if (tempaptbk.sub_department__c !== undefined) {
 															{
