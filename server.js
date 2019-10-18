@@ -171,8 +171,9 @@ app.post('/fetchslots', function(req, res) {
 															var snglitem = {};
 															var tempaptbk = aptmapp[sltrowss[i].appointment_booking__c];
 															var tempdept = deptmapp[tempaptbk.department__c];
-															//var sltnmeee = sltrowss[i].name.split("_");
-															snglitem.sltname = sltrowss[i].name;
+															var tempsltnme = sltrowss[i].name;
+															var sltnmeee = tempsltnme.split("_");
+															snglitem.sltname = sltnmeee;
 															snglitem.deptname = tempdept.name;
 														/*	if (tempaptbk.sub_department__c !== undefined) {
 															{
