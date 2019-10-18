@@ -27,7 +27,7 @@ app.post('/update', function(req, res) {
                     }
                     else {
                         // this will still cause jquery to display 'Record updated!'
-                        // eventhough it was inserted
+                        // eventhough it was inserted.
                         res.json(result);
                     }
                   });
