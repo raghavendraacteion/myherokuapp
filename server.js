@@ -174,23 +174,26 @@ app.post('/fetchslots', function(req, res) {
 															var sltnmeee = tempsltnme.split("_");
 															snglitem.sltname = sltnmeee[0];
 															snglitem.deptname = tempdept.name;
-															res.json(tempaptbk.sub_department__c);
-														/*	if (tempaptbk.sub_department__c == undefined) {
+															var subdeptdd = json.stringify(tempaptbk.sub_department__c);
+															
+															if (subdeptdd == undefined) {
 															{
 																snglitem.subdeptname = '-';
+																res.json("empty");
 															} 
 															else
 															{
 																var tempsubdept = subdeptmapp[tempaptbk.sub_department__c];
 																snglitem.subdeptname = tempsubdept.name;
+																res.json("not empty");
 															}  
 															var tempsubdept = subdeptmapp[tempaptbk.sub_department__c];
 															snglitem.subdeptname = tempsubdept.name;
 															snglitem.slttme = tttme;
 															snglitem.statuss = sltrowss[i].status__c;
-															rturnlstt.push(snglitem);  */
+															rturnlstt.push(snglitem);  
 														}
-														res.json(rturnlstt);  
+														//res.json(rturnlstt);  
 													}
 												}
 											);
