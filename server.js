@@ -191,7 +191,7 @@ app.post('/fetchslots', function(req, res) {
 															snglitem.statuss = sltrowss[i].status__c;
 															rturnlstt.push(snglitem);  */
 														}
-														res.json(rturnlstt);  
+														//res.json(rturnlstt);  
 													}
 												}
 											);
