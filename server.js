@@ -176,7 +176,7 @@ app.post('/fetchslots', function(req, res) {
 															snglitem.deptname = tempdept.name;
 															var subdeptdd = json.stringify(tempaptbk.sub_department__c);
 															
-															if (subdeptdd == undefined) {
+															if (subdeptdd == "null") {
 															{
 																snglitem.subdeptname = '-';
 																res.json("empty");
@@ -193,7 +193,7 @@ app.post('/fetchslots', function(req, res) {
 															snglitem.statuss = sltrowss[i].status__c;
 															rturnlstt.push(snglitem);  
 														}
-														//res.json(rturnlstt);  
+														res.json(rturnlstt);  
 													}
 												}
 											);
