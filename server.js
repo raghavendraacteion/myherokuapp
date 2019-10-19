@@ -182,12 +182,10 @@ app.post('/fetchslots', function(req, res) {
 															{
 																var tempsubdept = subdeptmapp[tempaptbk.sub_department__c];
 																snglitem.subdeptname = tempsubdept.name;
-																res.json("not empty");
 															} 
 															else
 															{
 																snglitem.subdeptname = '-';
-																res.json("empty");	
 															}  
 															//var tempsubdept = subdeptmapp[tempaptbk.sub_department__c];
 															//snglitem.subdeptname = tempsubdept.name;
