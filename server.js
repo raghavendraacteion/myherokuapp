@@ -118,7 +118,6 @@ app.post('/fetchslots', function(req, res) {
 														{
 															subdeptmapp[subdeptrows[i].sfid] = subdeptrows[i];
 														}
-														//res.json(aptmapp);
 														for(var i=0; i < sltrowss.length; i++)
 														{
 															var schstarttime = new Date(sltrowss[i].slot_start_time__c);
@@ -189,9 +188,9 @@ app.post('/fetchslots', function(req, res) {
 															snglitem.subdeptname = tempsubdept.name;
 															snglitem.slttme = tttme;
 															snglitem.statuss = sltrowss[i].status__c;
-															rturnlstt.push(snglitem);
+															rturnlstt.push(snglitem);  */
 														}
-														res.json(rturnlstt);  */
+														res.json(rturnlstt);  
 													}
 												}
 											);
