@@ -62,14 +62,14 @@ sampleApp.controller('showslobookpageecontroller', function($scope, $routeParams
 		contentType: "application/json; charset=utf-8",
 		dataType: "json",
 		success: function(data) {
-			alert(JSON.stringify(data));
-	         /*	var rowss = data;
+			//alert(JSON.stringify(data));
+	         	var rowss = data;
 			var listItemsHtml = '';
 			for(var i=0; i < rowss.length; i++)
 			{
 			      listItemsHtml += ('<tr><td style="width:20%" ><div title="">'+rowss[i].sltname+'</div></td><td style="width:20%" ><div>&nbsp;'+rowss[i].slttme+'</div></td><td style="width:24%" ><div title="">'+rowss[i].deptname+'</div></td><td style="width:24%" ><div title="">'+rowss[i].subdeptname+'</div></td><td style="width:12%" scope="col"><div title="">'+rowss[i].statuss+'</div></td></tr>');
 			}
-			document.querySelector('#sltsdivv').innerHTML = listItemsHtml;  */
+			document.querySelector('#sltsdivv').innerHTML = listItemsHtml;  
 		},
 		error: function(err) {
 			errorMessage.text(err.responseJSON.error);
