@@ -188,7 +188,7 @@ app.post('/fetchslots', function(req, res) {
 																snglitem.subdeptname = '-';
 															}  
 															snglitem.slttme = tttme;
-															snglitem.statuss = tempaptbk.Status__c;
+															snglitem.statuss = tempaptbk.status__c;
 															rturnlstt.push(snglitem); 
 														}
 														res.json(rturnlstt);  
