@@ -177,8 +177,8 @@ app.post('/fetchslots', function(req, res) {
 															snglitem.sltname = sltnmeee[0];
 															snglitem.deptname = tempdept.name;
 															//var subdeptdd = json.stringify(tempaptbk.sub_department__c);
-															res.json(subdeptmapp2.has(tempaptbk.sub_department__c)); 
-														/*	if (subdeptmapp2.has(tempaptbk.sub_department__c)) {
+															//res.json(subdeptmapp2.has(tempaptbk.sub_department__c)); 
+															if(subdeptmapp2.has(tempaptbk.sub_department__c)) 
 															{
 																var tempsubdept = subdeptmapp[tempaptbk.sub_department__c];
 																snglitem.subdeptname = tempsubdept.name;
@@ -189,9 +189,9 @@ app.post('/fetchslots', function(req, res) {
 															}  
 															snglitem.slttme = tttme;
 															snglitem.statuss = sltrowss[i].status__c;
-															rturnlstt.push(snglitem);  */
+															rturnlstt.push(snglitem); 
 														}
-														//res.json(rturnlstt);  
+														res.json(rturnlstt);  
 													}
 												}
 											);
