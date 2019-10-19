@@ -176,7 +176,7 @@ app.post('/fetchslots', function(req, res) {
 															snglitem.deptname = tempdept.name;
 															var subdeptdd = json.stringify(tempaptbk.sub_department__c);
 															
-															if (subdeptdd == "null") {
+															if (subdeptdd === null) {
 															{
 																snglitem.subdeptname = '-';
 																res.json("empty");
