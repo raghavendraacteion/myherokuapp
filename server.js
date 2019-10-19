@@ -114,9 +114,11 @@ app.post('/fetchslots', function(req, res) {
 														var rturnlstt = [];
 														var subdeptrows = result3.rows;
 														var subdeptmapp = {};
+														var subdeptmapp2 = new Map();
 														for(var i=0; i < subdeptrows.length; i++)
 														{
 															subdeptmapp[subdeptrows[i].sfid] = subdeptrows[i];
+															subdeptmapp2.set(subdeptrows[i].sfid, subdeptrows[i]);
 														}
 														for(var i=0; i < sltrowss.length; i++)
 														{
@@ -174,21 +176,21 @@ app.post('/fetchslots', function(req, res) {
 															var sltnmeee = tempsltnme.split("_");
 															snglitem.sltname = sltnmeee[0];
 															snglitem.deptname = tempdept.name;
-															var subdeptdd = json.stringify(tempaptbk.sub_department__c);
+															//var subdeptdd = json.stringify(tempaptbk.sub_department__c);
 															
-															if (subdeptdd == "null") {
-															{
-																snglitem.subdeptname = '-';
-																res.json("empty");
-															} 
-															else
+															if (subdeptmapp2.has(tempaptbk.sub_department__c)) {
 															{
 																var tempsubdept = subdeptmapp[tempaptbk.sub_department__c];
 																snglitem.subdeptname = tempsubdept.name;
 																res.json("not empty");
+															} 
+															else
+															{
+																snglitem.subdeptname = '-';
+																res.json("empty");	
 															}  
-															var tempsubdept = subdeptmapp[tempaptbk.sub_department__c];
-															snglitem.subdeptname = tempsubdept.name;
+															//var tempsubdept = subdeptmapp[tempaptbk.sub_department__c];
+															//snglitem.subdeptname = tempsubdept.name;
 															snglitem.slttme = tttme;
 															snglitem.statuss = sltrowss[i].status__c;
 															rturnlstt.push(snglitem);  
