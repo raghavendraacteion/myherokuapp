@@ -45,7 +45,7 @@ sampleApp.controller('mainController', function($scope, $routeParams) {
 
 sampleApp.controller('showslobookpageecontroller', function($scope, $routeParams) {
 	var hghttt = window.screen.height;
-	var temphtt = parseInt(hghttt)-400;
+	var temphtt = parseInt(hghttt)-415;
 	document.querySelector('#slotsstablediv').style.height = temphtt+"px";
 	var stts = 'Confirmed';
 	var connid = $routeParams.conid;
