@@ -25,6 +25,10 @@ sampleApp.config(['$routeProvider',
 			templateUrl: 'pages/sel_dept_page.html',
 			controller: 'selectdeptpagecontroller'
 		})
+	        .when('/calendarpage/:conid', {
+			templateUrl: 'pages/calendar_page.html',
+			controller: 'calendarpagecontroller'
+		})
 		.when('/home/:conid', {
 			templateUrl: 'pages/home.html',
 			controller: 'showhomepagecontroller'
@@ -118,6 +122,12 @@ sampleApp.controller('showslobookpageecontroller', function($scope, $routeParams
 	});
 	
 });
+
+sampleApp.controller('calendarpagecontroller', function($scope, $routeParams) {
+
+	
+});
+
 
 sampleApp.controller('showforgotpagecontroller', function($scope, $routeParams) {
 
