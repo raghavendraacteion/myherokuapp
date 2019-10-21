@@ -21,6 +21,10 @@ sampleApp.config(['$routeProvider',
 			templateUrl: 'pages/slot_booking_page.html',
 			controller: 'showslobookpageecontroller'
 		})
+	        .when('/selectdeptpage/:conid', {
+			templateUrl: 'pages/sel_dept_page.html',
+			controller: 'selectdeptpagecontroller'
+		})
 		.when('/home/:conid', {
 			templateUrl: 'pages/home.html',
 			controller: 'showhomepagecontroller'
@@ -41,6 +45,16 @@ sampleApp.controller('showhomepagecontroller', function($scope, $routeParams) {
 sampleApp.controller('mainController', function($scope, $routeParams) {
 
 	
+});
+
+
+sampleApp.controller('selectdeptpagecontroller', function($scope, $routeParams) {
+
+	var hmstrLink = "#home/" + $routeParams.conid;
+        var sltstrLink = "#slotbookingpage/" + $routeParams.conid;
+	document.getElementById("lgid").setAttribute("href",hmstrLink);
+	document.getElementById("hmid").setAttribute("href",hmstrLink);
+        document.getElementById("stid").setAttribute("href",sltstrLink);
 });
 
 sampleApp.controller('showslobookpageecontroller', function($scope, $routeParams) {
