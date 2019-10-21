@@ -44,7 +44,9 @@ sampleApp.controller('mainController', function($scope, $routeParams) {
 });
 
 sampleApp.controller('showslobookpageecontroller', function($scope, $routeParams) {
-	alert(window.screen.height);
+	var hghttt = window.screen.height;
+	var temphtt = parseInt(hghttt)-400;
+	document.querySelector('#slotsstablediv').style.height = temphtt+"px";
 	var stts = 'Confirmed';
 	var connid = $routeParams.conid;
 	var hmstrLink = "#home/" + $routeParams.conid;
