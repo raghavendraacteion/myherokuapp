@@ -65,7 +65,7 @@ sampleApp.controller('selectdeptpagecontroller', function($scope, $routeParams) 
 			//alert(JSON.stringify(data));
 	         	var rowss = data.rows;
 			var listItemsHtml = '';
-			listItemsHtml += ('<span class="labelclass">Department</span><br/><select id="depcomp" class="selcttagstyl" name="department">');
+			listItemsHtml += ('<span class="labelclass">Department</span><br/><select id="depcomp" class="selcttagstyl" onchange="report(this.value)" name="department"><option value="None">--None--</option>');
 			for(var i=0; i < rowss.length; i++)
 			{
 			      listItemsHtml += ('<option value="'+rowss[i].sfid+'">'+rowss[i].name+'</option>');
