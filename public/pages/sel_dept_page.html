@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Phone Changer</title>
+    <link rel="shortcut icon" type="image/png" href="/favicon.ico">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//www.lightningdesignsystem.com/_next/static/style.css">
+
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <style>
+        body {
+        }
+	.dropbtn {
+	  background-color: white;
+	  color: black;
+	  padding-top: 0px;
+	  padding-bottom: 0px;
+	  padding-left: 6px;
+	  padding-right: 6px;
+	  font-size: 16px;
+	  border: 1px solid black;
+          border-radius: 3px;		
+	  cursor: pointer;
+	}
+	.dropdown {
+	  position: relative;
+	  display: inline-block;
+	}
+	.dropdown-content {
+	  display: none;
+	  position: absolute;
+	  right: 0;
+	  background-color: #f9f9f9;
+	  min-width: 160px;
+	  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	  z-index: 1;
+	}
+	.dropdown-content a {
+	  color: black;
+	  padding: 10px 12px;
+	  text-decoration: none;
+	  display: block;
+	  font-size:14px;
+	}
+	.dropdown-content a:hover {background-color: #f1f1f1;font-size:14px;}
+	.dropdown:hover .dropdown-content {
+	  display: block;
+	}
+	.dropdown:hover .dropbtn {
+	  background-color: white;
+	}    
+    </style>
+    <script>
+	
+    </script>
+</head>
+<body>
+	
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" style="border-bottom:2px solid black;width:100%;">
+  
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <a class="navbar-brand" href="#home" id="lgid">
+	  <img src="img/calvin logo.png" width="140" height="45" class="d-inline-block align-top" alt="">
+       </a>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#home" style="font-size:14px;color:black;" id="hmid">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#slotbookingpage" style="font-size:14px;color:black;border-bottom:1px solid black;" id="stid">Student Counseling Scheduler</a>
+      </li>
+      
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <div class="dropdown" style="float:right;">
+	      <button class="dropbtn">
+		      <i class="glyphicon glyphicon-user"></i>
+	      </button>
+		<div class="dropdown-content">
+			<a href="#">Logout</a>
+		</div>
+       </div>  
+    </form>
+  </div>
+</nav>
+	
+<br/><br/><br/><br/>
+<div class="" style="padding:10px;">
+        <div id="error" class="alert alert-danger" role="alert" style="display: none;">
+		<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+		<span class="sr-only">Error:</span>
+		<span id="errorMessage"></span>
+	</div>
+	<div style="width:100%;" id="maindiv">
+	<div style="width:100%;" id="cnfrmslotsdiv">
+		<table style="width:100%;">
+			<tr>
+				<td style="width:100%;vertical-align:top;">
+					<div style="width:100%;background-color:#e1e9ed;border-radius:0.5rem;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+						<div style="padding:0.5rem;background-color:#667db6;border-radius:0.5rem;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+							<center>
+								<span style="font-size:16px;color:white;font-weight:bold;">
+									Select Department
+								</span>
+							</center>
+						</div>
+                        <br/>
+						
+						<div style="font-size:13px;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);margin-left:1rem;margin-right:1rem;margin-top:5px;background-color:white;border-radius:0.25rem;padding:1rem;">
+							<table style="width:100%;">
+								<tr>
+									<td style="width:50%;">
+									📢&nbsp;&nbsp;
+										<span style="font-size:13px;">
+											Select Department and Sub Department (if applicable) to go to the Scheduler<br/>
+										</span>
+									</td>
+									<td style="width:50%;">
+										<button type="button" onclick="loginfunc()" class="btn btn-primary" style="float:right;font-weight:bold;font-size:15px;">Back to Confirmed Counseling Sessions</button>
+									</td>
+								</tr>
+							</table>
+							
+						</div>
+						
+						<br/>
+						
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+</div>
+</body>
+</html>
