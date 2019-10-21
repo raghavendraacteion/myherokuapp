@@ -86,31 +86,38 @@
 		location.replace(sbpurl);
 	};
 	function report(dept) {
-		$.ajax({
-			url: "/fetchsubdepartmentss",
-			method: "post",
-			data: JSON.stringify({
-			    seldept: dept,
-			}),
-			contentType: "application/json; charset=utf-8",
-			dataType: "json",
-			success: function(data) {
-				//alert(JSON.stringify(data));
-				var rowss = data.rows;
-				var listItemsHtml = '';
-				listItemsHtml += ('<span class="labelclass">Sub-Department</span><br/><select id="subdepcomp" class="selcttagstyl" onchange="showcalendarr(this.value)" name="subdepcomp"><option value="None">--None--</option>');
-				for(var i=0; i < rowss.length; i++)
-				{
-				      listItemsHtml += ('<option value="'+rowss[i].sfid+'">'+rowss[i].name+'</option>');
+		if(dept == 'None')
+		{
+			document.querySelector('#subdeptdivv').innerHTML = '';  
+		}
+		else
+		{
+			$.ajax({
+				url: "/fetchsubdepartmentss",
+				method: "post",
+				data: JSON.stringify({
+				    seldept: dept,
+				}),
+				contentType: "application/json; charset=utf-8",
+				dataType: "json",
+				success: function(data) {
+					//alert(JSON.stringify(data));
+					var rowss = data.rows;
+					var listItemsHtml = '';
+					listItemsHtml += ('<span class="labelclass">Sub-Department</span><br/><select id="subdepcomp" class="selcttagstyl" onchange="showcalendarr(this.value)" name="subdepcomp"><option value="None">--None--</option>');
+					for(var i=0; i < rowss.length; i++)
+					{
+					      listItemsHtml += ('<option value="'+rowss[i].sfid+'">'+rowss[i].name+'</option>');
+					}
+					listItemsHtml += ('</select><br/>');
+					document.querySelector('#subdeptdivv').innerHTML = listItemsHtml;  
+				},
+				error: function(err) {
+					errorMessage.text(err.responseJSON.error);
+					error.show();
 				}
-				listItemsHtml += ('</select><br/>');
-				document.querySelector('#subdeptdivv').innerHTML = listItemsHtml;  
-			},
-			error: function(err) {
-				errorMessage.text(err.responseJSON.error);
-				error.show();
-			}
-		});
+			});
+	       }
         };
 	    
 	function showcalendarr(subdept)
