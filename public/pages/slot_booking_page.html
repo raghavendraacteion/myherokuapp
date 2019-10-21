@@ -60,7 +60,10 @@
 	}    
     </style>
     <script>
-	
+	function gotoseldeptpage() {
+		var lnkhref = document.getElementById("stid").getAttribute("href");
+		alert(lnkhref);
+	};
     </script>
 </head>
 <body>
@@ -125,7 +128,7 @@
 										</span>
 									</td>
 									<td style="width:50%;">
-										<button type="button" onclick="loginfunc()" class="btn btn-primary" style="float:right;font-weight:bold;font-size:15px;">Schedule Student Counseling Session</button>
+										<button type="button" onclick="gotoseldeptpage()" class="btn btn-primary" style="float:right;font-weight:bold;font-size:15px;">Schedule Student Counseling Session</button>
 									</td>
 								</tr>
 							</table>
