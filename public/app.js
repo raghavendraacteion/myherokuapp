@@ -44,6 +44,7 @@ sampleApp.controller('mainController', function($scope, $routeParams) {
 });
 
 sampleApp.controller('showslobookpageecontroller', function($scope, $routeParams) {
+	alert(window.screen.height);
 	var stts = 'Confirmed';
 	var connid = $routeParams.conid;
 	var hmstrLink = "#home/" + $routeParams.conid;
