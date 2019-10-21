@@ -103,14 +103,24 @@
 				success: function(data) {
 					//alert(JSON.stringify(data));
 					var rowss = data.rows;
-					var listItemsHtml = '';
-					listItemsHtml += ('<span class="labelclass">Sub-Department</span><br/><select id="subdepcomp" class="selcttagstyl" onchange="showcalendarr(this.value)" name="subdepcomp"><option value="None">--None--</option>');
-					for(var i=0; i < rowss.length; i++)
+					if(rowss.length === 0)
 					{
-					      listItemsHtml += ('<option value="'+rowss[i].sfid+'">'+rowss[i].name+'</option>');
+						var lnkhref = document.getElementById("stid").getAttribute("href");
+						var contid = lnkhref.split("/");
+						var cpurl = "#calendarpage/"+contid[1]+"_"+dept;
+						location.replace(cpurl);	
 					}
-					listItemsHtml += ('</select><br/>');
-					document.querySelector('#subdeptdivv').innerHTML = listItemsHtml;  
+					else
+					{
+						var listItemsHtml = '';
+						listItemsHtml += ('<span class="labelclass">Sub-Department</span><br/><select id="subdepcomp" class="selcttagstyl" onchange="showcalendarr(this.value)" name="subdepcomp"><option value="None">--None--</option>');
+						for(var i=0; i < rowss.length; i++)
+						{
+						      listItemsHtml += ('<option value="'+rowss[i].sfid+'">'+rowss[i].name+'</option>');
+						}
+						listItemsHtml += ('</select><br/>');
+						document.querySelector('#subdeptdivv').innerHTML = listItemsHtml; 
+					}
 				},
 				error: function(err) {
 					errorMessage.text(err.responseJSON.error);
@@ -122,7 +132,12 @@
 	    
 	function showcalendarr(subdept)
 	{
-		alert(subdept);
+		//alert(subdept);
+		var lnkhref = document.getElementById("stid").getAttribute("href");
+		var dept = document.getElementById("depcomp").getAttribute("value");
+		var contid = lnkhref.split("/");
+		var cpurl = "#calendarpage/"+contid[1]+"_"+dept+"_"+subdept;
+		location.replace(cpurl);
 	};
     </script>
 </head>
