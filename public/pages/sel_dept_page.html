@@ -60,7 +60,13 @@
 	}    
     </style>
     <script>
-	
+	function gotoslotbkngpage() {
+		var lnkhref = document.getElementById("stid").getAttribute("href");
+		var contid = lnkhref.split("/");
+		//alert(contid[1]);
+		var sbpurl = "#slotbookingpage/"+contid[1];
+		location.replace(sbpurl);
+	};
     </script>
 </head>
 <body>
@@ -125,7 +131,7 @@
 										</span>
 									</td>
 									<td style="width:50%;">
-										<button type="button" onclick="loginfunc()" class="btn btn-primary" style="float:right;font-weight:bold;font-size:15px;">Back to Confirmed Counseling Sessions</button>
+										<button type="button" onclick="gotoslotbkngpage()" class="btn btn-primary" style="float:right;font-weight:bold;font-size:15px;">Back to Confirmed Counseling Sessions</button>
 									</td>
 								</tr>
 							</table>
