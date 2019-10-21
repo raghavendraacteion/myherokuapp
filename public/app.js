@@ -55,6 +55,29 @@ sampleApp.controller('selectdeptpagecontroller', function($scope, $routeParams) 
 	document.getElementById("lgid").setAttribute("href",hmstrLink);
 	document.getElementById("hmid").setAttribute("href",hmstrLink);
         document.getElementById("stid").setAttribute("href",sltstrLink);
+	
+	$.ajax({
+		url: "/fetchdepartmentss",
+		method: "get",
+		contentType: "application/json; charset=utf-8",
+		dataType: "json",
+		success: function(data) {
+			//alert(JSON.stringify(data));
+	         	var rowss = data.rows;
+			var listItemsHtml = '';
+			listItemsHtml += ('<span class="labelclass">Department</span><br/><select id="depcomp" class="selcttagstyl" name="department">');
+			for(var i=0; i < rowss.length; i++)
+			{
+			      listItemsHtml += ('<option value="'+rowss[i].sfid+'">'+rowss[i].name+'</option>');
+			}
+			listItemsHtml += ('</select><br/>');
+			document.querySelector('#deptdivv').innerHTML = listItemsHtml;  
+		},
+		error: function(err) {
+			errorMessage.text(err.responseJSON.error);
+			error.show();
+		}
+	});
 });
 
 sampleApp.controller('showslobookpageecontroller', function($scope, $routeParams) {
