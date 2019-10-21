@@ -62,7 +62,10 @@
     <script>
 	function gotoseldeptpage() {
 		var lnkhref = document.getElementById("stid").getAttribute("href");
-		alert(lnkhref);
+		var contid = lnkhref.split("/");
+		alert(contid);
+		var sdpurl = "#selectdeptpage/"+contid;
+		location.replace(sdpurl);
 	};
     </script>
 </head>
