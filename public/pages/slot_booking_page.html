@@ -63,8 +63,8 @@
 	function gotoseldeptpage() {
 		var lnkhref = document.getElementById("stid").getAttribute("href");
 		var contid = lnkhref.split("/");
-		alert(contid);
-		var sdpurl = "#selectdeptpage/"+contid;
+		//alert(contid[1]);
+		var sdpurl = "#selectdeptpage/"+contid[1];
 		location.replace(sdpurl);
 	};
     </script>
