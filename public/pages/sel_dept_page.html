@@ -132,9 +132,9 @@
 	    
 	function showcalendarr(subdept)
 	{
-		//alert(subdept);
+		//alert(subdept); 
 		var lnkhref = document.getElementById("stid").getAttribute("href");
-		var dept = document.getElementById("depcomp").getAttribute("value");
+		var dept = document.querySelector('#depcomp').value;
 		var contid = lnkhref.split("/");
 		var cpurl = "#calendarpage/"+contid[1]+"_"+dept+"_"+subdept;
 		location.replace(cpurl);
