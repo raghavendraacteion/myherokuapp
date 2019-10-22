@@ -131,6 +131,51 @@ sampleApp.controller('calendarpagecontroller', function($scope, $routeParams) {
 	document.getElementById("lgid").setAttribute("href",hmstrLink);
 	document.getElementById("hmid").setAttribute("href",hmstrLink);
         document.getElementById("stid").setAttribute("href",sltstrLink);
+	
+	$.ajax({
+		url: "/fetchdeptname",
+		method: "post",
+		data: JSON.stringify({
+		    seldept: idslst[1],
+		}),
+		contentType: "application/json; charset=utf-8",
+		dataType: "json",
+		success: function(data) {
+			//alert(JSON.stringify(data));
+			var rowss = data.rows;
+			var listItemsHtml = '';
+			listItemsHtml += ('<span style="font-size:13px;font-weight:bold;">'+rowss[0].name+'</span>&nbsp;&nbsp;&nbsp;&nbsp;');
+			listItemsHtml += ('<span class="glyphicon glyphicon-pencil"></span><div style="width:100%;height:1px;border-bottom: 1px #dddbda solid;"></div>');
+			document.querySelector('#deptmntdivv').innerHTML = listItemsHtml; 
+		},
+		error: function(err) {
+			alert(err.responseJSON.error);
+		}
+	});
+	
+	if(idslst.length > 2)
+	{
+		$.ajax({
+			url: "/fetchsubdeptname",
+			method: "post",
+			data: JSON.stringify({
+			    selsubdept: idslst[2],
+			}),
+			contentType: "application/json; charset=utf-8",
+			dataType: "json",
+			success: function(data) {
+				//alert(JSON.stringify(data));
+				var rowss = data.rows;
+				var listItemsHtml = '';
+				listItemsHtml += ('<span style="font-size:13px;font-weight:bold;">'+rowss[0].name+'</span>&nbsp;&nbsp;&nbsp;&nbsp;');
+				listItemsHtml += ('<span class="glyphicon glyphicon-pencil"></span><div style="width:100%;height:1px;border-bottom: 1px #dddbda solid;"></div>');
+				document.querySelector('#subbdeptmntdivv').innerHTML = listItemsHtml;
+			},
+			error: function(err) {
+				alert(err.responseJSON.error);
+			}
+		});   
+	}
 });
 
 
