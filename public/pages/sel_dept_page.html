@@ -123,8 +123,9 @@
 					}
 				},
 				error: function(err) {
-					errorMessage.text(err.responseJSON.error);
-					error.show();
+					//errorMessage.text(err.responseJSON.error);
+					//error.show();
+					alert(err.responseJSON.error);
 				}
 			});
 	       }
