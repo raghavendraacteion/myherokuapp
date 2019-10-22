@@ -25,7 +25,7 @@ sampleApp.config(['$routeProvider',
 			templateUrl: 'pages/sel_dept_page.html',
 			controller: 'selectdeptpagecontroller'
 		})
-	        .when('/calendarpage/:conid', {
+	        .when('/calendarpage/:reqids', {
 			templateUrl: 'pages/calendar_page.html',
 			controller: 'calendarpagecontroller'
 		})
@@ -124,8 +124,13 @@ sampleApp.controller('showslobookpageecontroller', function($scope, $routeParams
 });
 
 sampleApp.controller('calendarpagecontroller', function($scope, $routeParams) {
-
-	
+	var allids = $routeParams.reqids;
+	var idslst = allids.split("_");
+	var hmstrLink = "#home/" + idslst[0];
+        var sltstrLink = "#slotbookingpage/" + idslst[0];
+	document.getElementById("lgid").setAttribute("href",hmstrLink);
+	document.getElementById("hmid").setAttribute("href",hmstrLink);
+        document.getElementById("stid").setAttribute("href",sltstrLink);
 });
 
 
