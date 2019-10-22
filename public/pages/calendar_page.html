@@ -78,29 +78,27 @@
 	}
 	    
 	.tooltip {
-    	    position: relative;
-    	    display: inline-block;
+	  position: relative;
+	  display: inline-block;
+	  border-bottom: 1px dotted black;
 	}
 
-        .tooltip .tooltiptext {
-    	    visibility: hidden;
-	    width: 740px;
-	    background-color: #2573A5;
-	    color: #fff;
-	    text-align: center;
-	    border-radius: 6px;
-	    padding: 5px 5px;
-	    position: absolute;
-	    z-index: 1;
-	    top: -13px;
-	    left: 135%;
-	    opacity: 0;
-	    transition: opacity 1.5s;
-       }
+	.tooltip .tooltiptext {
+	  visibility: hidden;
+	  width: 220px;
+	  background-color: black;
+	  color: #fff;
+	  text-align: center;
+	  border-radius: 6px;
+	  padding: 5px 0;
+	  position: absolute;
+	  z-index: 1;
+	  top: -5px;
+	  left: 105%;
+	}
 
 	.tooltip:hover .tooltiptext {
-	    visibility: visible;
-	    opacity: 1;
+	  visibility: visible;
 	}
     </style>
     <script>
@@ -174,7 +172,7 @@
 							    <tr>
 								<td style="width:35%;">
 								    <div class="tooltip">
-									<span class="glyphicon glyphicon-info-sign"></span>
+									    Hover over me
 									<span class="tooltiptext">
 									    Select three sessions of your preferable timings.<br/>
 									    If you want to unselect a session, click on delete icon beside session in left section.<br/>
