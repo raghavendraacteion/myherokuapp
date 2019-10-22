@@ -145,7 +145,7 @@ sampleApp.controller('calendarpagecontroller', function($scope, $routeParams) {
 			var rowss = data.rows;
 			var listItemsHtml = '';
 			listItemsHtml += ('<span style="font-size:13px;font-weight:bold;">'+rowss[0].name+'</span>&nbsp;&nbsp;&nbsp;&nbsp;');
-			listItemsHtml += ('<span class="glyphicon glyphicon-pencil"></span><div style="width:100%;height:1px;border-bottom: 1px #dddbda solid;"></div>');
+			listItemsHtml += ('<span class="glyphicon glyphicon-pencil" style="cursor: pointer;" onclick="editdeprtmnt()"></span><div style="width:100%;height:1px;border-bottom: 1px #dddbda solid;"></div>');
 			document.querySelector('#deptmntdivv').innerHTML = listItemsHtml; 
 		},
 		error: function(err) {
@@ -168,7 +168,7 @@ sampleApp.controller('calendarpagecontroller', function($scope, $routeParams) {
 				var rowss = data.rows;
 				var listItemsHtml = '';
 				listItemsHtml += ('<span style="font-size:13px;font-weight:bold;">'+rowss[0].name+'</span>&nbsp;&nbsp;&nbsp;&nbsp;');
-				listItemsHtml += ('<span class="glyphicon glyphicon-pencil"></span><div style="width:100%;height:1px;border-bottom: 1px #dddbda solid;"></div>');
+				listItemsHtml += ('<span class="glyphicon glyphicon-pencil" style="cursor: pointer;" onclick="edtsubdeprtmnt()"></span><div style="width:100%;height:1px;border-bottom: 1px #dddbda solid;"></div>');
 				document.querySelector('#subbdeptmntdivv').innerHTML = listItemsHtml;
 			},
 			error: function(err) {
