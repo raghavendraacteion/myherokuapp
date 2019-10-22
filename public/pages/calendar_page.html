@@ -100,6 +100,89 @@
 	.tooltip:hover .tooltiptext {
 	  visibility: visible;
 	}
+	    
+	.hidepointer 
+	{
+	    font-size:10px;
+	    cursor:pointer;
+	    color:white;
+	    height: 15px;
+	    position: relative;
+	    background: #0070d2;
+	    display:inline-block;
+	    margin-top:5px;
+	    margin-bottom:1px;
+	    float:right;
+	    padding-left:3px;
+	    padding-right:11px;
+	}
+
+	.hidepointer:after 
+	{
+	    content: "";
+	    position: absolute;
+	    right: 0;
+	    bottom: 0;
+	    width: 0;
+	    height: 0;
+	    border-right: 7.5px solid #D1F2EB;
+	    border-top: 7.5px solid transparent;
+	    border-bottom: 7.5px solid transparent;
+	}
+
+	.hidepointer:before 
+	{
+	    content: "";
+	    position: absolute;
+	    left: -7.5px;
+	    bottom: 0;
+	    width: 0;
+	    height: 0;
+	    border-right: 7.5px solid #0070d2;
+	    border-top: 7.5px solid transparent;
+	    border-bottom: 7.5px solid transparent;
+	}
+
+	.pointer 
+	{
+	    font-size:10px;
+	    color:white;
+	    height: 15px;
+	    cursor:pointer;
+	    position: relative;
+	    background: #0070d2;
+	    display:inline-block;
+	    margin-top:5px;
+	    margin-bottom:5px;
+	    padding-left:11px;
+	    padding-right:3px;
+	}
+
+	.pointer:after 
+	{
+	    content: "";
+	    position: absolute;
+	    left: 0;
+	    bottom: 0;
+	    width: 0;
+	    height: 0;
+	    border-left: 7.5px solid #D1F2EB;
+	    border-top: 7.5px solid transparent;
+	    border-bottom: 7.5px solid transparent;
+	}
+
+	.pointer:before 
+	{
+	    content: "";
+	    position: absolute;
+	    right: -7.5px;
+	    bottom: 0;
+	    width: 0;
+	    height: 0;
+	    border-left: 7.5px solid #0070d2;
+	    border-top: 7.5px solid transparent;
+	    border-bottom: 7.5px solid transparent;
+	}
     </style>
     <script>
 	function gotoslotbkngpage() {
@@ -109,7 +192,14 @@
 		var sbpurl = "#slotbookingpage/"+contid[1];
 		location.replace(sbpurl);
 	};
-	
+	function hidesidesection(){
+		document.querySelector('#sidescetionn').style.display = "none";
+		document.querySelector('#sidesectionshowpointerdiv').style.display = "block";
+	};
+	function showsidesection(){
+		document.querySelector('#sidescetionn').style.display = "block";
+		document.querySelector('#sidesectionshowpointerdiv').style.display = "none";
+	};
     </script>
 </head>
 <body>
@@ -153,7 +243,7 @@
 	<div style="width:100%;" id="cnfrmslotsdiv">
 		<table style="width:100%;">
 			<tr>
-				<td style="padding:1rem;width:27%;border-right: 2px #dddbda solid;vertical-align:top;">
+				<td style="padding:1rem;width:27%;border-right: 2px #dddbda solid;vertical-align:top;" id="sidescetionn">
 					<div style="width:100%;background-color:#e1e9ed;border-radius:0.5rem;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
 						<div style="padding:0.5rem;background-color:#667db6;border-radius:0.5rem;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
 							<center>
@@ -162,6 +252,67 @@
 								</span>
 							</center>
 						</div>
+						<div class="hidepointer" onclick="hidesidesection()">
+							Hide Me
+						</div><br/><br/>
+						
+						<div style="width:90%;margin-left:5%;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);border-radius:0.25rem;background-color: white;">
+							<table>
+								<tr>
+								    <td style="padding:0.5rem;border-bottom: 3px #dddbda dashed;vertical-align:top;">
+									<span class="labelclass">Department</span><br/>
+									<div id="deptmntdivv">
+									</div>
+									<div style="height:3px;"></div>
+									<span class="labelclass">Sub-Department</span><br/>   
+									<div id="subbdeptmntdivv">
+									</div>
+									    </td>
+								</tr>
+								<tr>
+								    <td style="vertical-align:bottom;">
+									<center>
+									    <div style="width:200px;font-size:12px;padding:0.5rem;">
+										<table >
+										    <tr >
+											<td style="width:25px;">
+											    <div style="height:15px;width:15px;background-color:#FFE8A2;">
+											    </div>
+											</td>
+											<td style="width:70px;">
+											    Selected  
+											</td>
+											<td style="width:25px;">
+											    <div style="height:15px;width:15px;background-color:#c0c0c0;">
+											    </div>
+											</td>
+											<td style="width:90px;">
+											    Not Available
+											</td>
+										    </tr>
+										    <tr>
+											<td>
+											    <div style="height:15px;width:15px;background-color:#d0f0c0;">
+											    </div>
+											</td>
+											<td>
+											    Available  
+											</td>
+											<td>
+											    <div style="height:15px;width:15px;background-color:orange;">
+											    </div>
+											</td>
+											<td>
+											    Confirmed
+											</td>
+										    </tr>
+										</table>
+									    </div>
+									</center>
+								    </td>
+							         </tr>
+						        </table>
+						</div>	
 					</div>
 				</td>
 				    
@@ -186,6 +337,12 @@
 								</td>
 							    </tr>
 							</table>
+						</div>
+						
+						<div style="width:100%;display:none" id="sidesectionshowpointerdiv">
+							<div class="pointer" onclick="showsidesection()">
+								Show Counseling Sessions Information
+							</div>
 						</div>
 					</div>	
 				</td>
