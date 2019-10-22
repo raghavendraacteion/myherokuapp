@@ -20,68 +20,94 @@
         body {
         }
 	.dropbtn {
-	  background-color: white;
-	  color: black;
-	  padding-top: 0px;
-	  padding-bottom: 0px;
-	  padding-left: 6px;
-	  padding-right: 6px;
-	  font-size: 16px;
-	  border: 1px solid black;
-          border-radius: 3px;		
-	  cursor: pointer;
+	    background-color: white;
+	    color: black;
+	    padding-top: 0px;
+	    padding-bottom: 0px;
+	    padding-left: 6px;
+	    padding-right: 6px;
+	    font-size: 16px;
+	    border: 1px solid black;
+            border-radius: 3px;		
+	    cursor: pointer;
 	}
 	.dropdown {
-	  position: relative;
-	  display: inline-block;
+	    position: relative;
+	    display: inline-block;
 	}
 	.dropdown-content {
-	  display: none;
-	  position: absolute;
-	  right: 0;
-	  background-color: #f9f9f9;
-	  min-width: 160px;
-	  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-	  z-index: 1;
+	    display: none;
+	    position: absolute;
+	    right: 0;
+	    background-color: #f9f9f9;
+	    min-width: 160px;
+	    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	    z-index: 1;
 	}
 	.dropdown-content a {
-	  color: black;
-	  padding: 10px 12px;
-	  text-decoration: none;
-	  display: block;
-	  font-size:14px;
+	   color: black;
+	   padding: 10px 12px;
+	   text-decoration: none;
+	   display: block;
+	   font-size:14px;
 	}
 	.dropdown-content a:hover {background-color: #f1f1f1;font-size:14px;}
 	.dropdown:hover .dropdown-content {
-	  display: block;
+	    display: block;
 	}
 	.dropdown:hover .dropbtn {
-	  background-color: white;
+	    background-color: white;
 	}
 	
-	 .labelclass
+	.labelclass
 	{
-	  display: inline-block;
-    	  color: #706e6b;
-    	  font-size: 11px;
-	  font-weight: bold;
-    	  margin-right: 0.75rem;
-    	  margin-bottom: 0.125rem; 
+	    display: inline-block;
+    	    color: #706e6b;
+    	    font-size: 11px;
+	    font-weight: bold;
+    	    margin-right: 0.75rem;
+    	    margin-bottom: 0.125rem; 
 	}
 	.selcttagstyl
 	{
-	  background-color: white;
-	  border: 1px solid #dddbda;
-	  border-radius: 0.25rem;
-	  width: 100%;
-	  padding: 0.45rem 1rem 0.45rem 0.75rem;
+	    background-color: white;
+	    border: 1px solid #dddbda;
+	    border-radius: 0.25rem;
+	    width: 100%;
+	    padding: 0.45rem 1rem 0.45rem 0.75rem;
+	}
+	    
+	.tooltip {
+    	    position: relative;
+    	    display: inline-block;
+	}
+
+        .tooltip .tooltiptext {
+    	    visibility: hidden;
+	    width: 740px;
+	    background-color: #2573A5;
+	    color: #fff;
+	    text-align: center;
+	    border-radius: 6px;
+	    padding: 5px 5px;
+	    position: absolute;
+	    z-index: 1;
+	    top: -13px;
+	    left: 135%;
+	    opacity: 0;
+	    transition: opacity 1.5s;
+       }
+
+	.tooltip:hover .tooltiptext {
+	    visibility: visible;
+	    opacity: 1;
 	}
     </style>
     <script>
 	function gotoslotbkngpage() {
 		var lnkhref = document.getElementById("stid").getAttribute("href");
 		var contid = lnkhref.split("/");
-		//alert(contid[1]);
+		alert(contid[1]);
 		var sbpurl = "#slotbookingpage/"+contid[1];
 		location.replace(sbpurl);
 	};
@@ -144,7 +170,33 @@
 				<td style="width:73%;padding:1rem;vertical-align:top;">
 					<div style="width:100%;background-color:#e1e9ed;border-radius:0.5rem;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
 						<div style="padding:0.5rem;background-color:#667db6;border-radius:0.5rem;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-							<br/>
+							<table style="width:100%;">
+							    <tr>
+								<td style="width:35%;">
+								    <div class="tooltip">
+									<a href="#">
+									  <span class="glyphicon glyphicon-info-sign"></span>
+									</a>
+									<span class="tooltiptext">
+									    Select three sessions of your preferable timings.<br/>
+									    If you want to unselect a session, click on delete icon beside session in left section.<br/>
+									    After selecting sessions, click on "Confirm Preferred Sessions" button to book session.  
+									</span>
+								    </div>
+								</td>
+								<td style="width:30%;">
+								    <center>
+									<span id="clndrhedngspan" style="color:white;font-weight:bold;font-size:14px;">
+									</span>
+								    </center>
+								</td>
+								<td style="width:35%;">
+								    <span style="font-size:15px;border-radius:0.25rem;cursor:pointer;background-color:white;color:#0070d2;font-weight:bold;text-decoration:underline;float:right;" onclick="gotoslotbkngpage()">
+									&nbsp;&nbsp;&lt;&lt;Back to Confirmed Counseling Sessions&nbsp;&nbsp;
+								    </span>
+								</td>
+							    </tr>
+							</table>
 						</div>
 					</div>	
 				</td>
