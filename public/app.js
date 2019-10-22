@@ -78,8 +78,9 @@ sampleApp.controller('selectdeptpagecontroller', function($scope, $routeParams) 
 			document.querySelector('#deptdivv').innerHTML = listItemsHtml;  
 		},
 		error: function(err) {
-			errorMessage.text(err.responseJSON.error);
-			error.show();
+			//errorMessage.text(err.responseJSON.error);
+			//error.show();
+			alert(err.responseJSON.error);
 		}
 	});
 });
@@ -116,8 +117,9 @@ sampleApp.controller('showslobookpageecontroller', function($scope, $routeParams
 			document.querySelector('#sltsdivv').innerHTML = listItemsHtml;  
 		},
 		error: function(err) {
-			errorMessage.text(err.responseJSON.error);
-			error.show();
+			//errorMessage.text(err.responseJSON.error);
+			//error.show();
+			alert(err.responseJSON.error);
 		}
 	});
 	
