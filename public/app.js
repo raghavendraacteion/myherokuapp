@@ -126,6 +126,7 @@ sampleApp.controller('showslobookpageecontroller', function($scope, $routeParams
 });
 
 sampleApp.controller('calendarpagecontroller', function($scope, $routeParams) {
+	document.querySelector('#subdeptlabel').style.display = "none";
 	var allids = $routeParams.reqids;
 	var idslst = allids.split("_");
 	var hmstrLink = "#home/" + idslst[0];
@@ -157,6 +158,7 @@ sampleApp.controller('calendarpagecontroller', function($scope, $routeParams) {
 	
 	if(idslst.length > 2)
 	{
+		document.querySelector('#subdeptlabel').style.display = "block";
 		$.ajax({
 			url: "/fetchsubdeptname",
 			method: "post",
