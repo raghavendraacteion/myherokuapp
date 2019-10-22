@@ -107,7 +107,7 @@
 	function gotoslotbkngpage() {
 		var lnkhref = document.getElementById("stid").getAttribute("href");
 		var contid = lnkhref.split("/");
-		alert(contid[1]);
+		//alert(contid[1]);
 		var sbpurl = "#slotbookingpage/"+contid[1];
 		location.replace(sbpurl);
 	};
@@ -174,9 +174,7 @@
 							    <tr>
 								<td style="width:35%;">
 								    <div class="tooltip">
-									<a href="#">
-									  <span class="glyphicon glyphicon-info-sign"></span>
-									</a>
+									<span class="glyphicon glyphicon-info-sign"></span>
 									<span class="tooltiptext">
 									    Select three sessions of your preferable timings.<br/>
 									    If you want to unselect a session, click on delete icon beside session in left section.<br/>
