@@ -278,9 +278,59 @@
 			});
 		}
 	};
-	function edtsubdeprtmnt(){
-	    var dataId = $("#subdepttitlediv").attr("data-id");
-	    alert(dataId);	
+	
+	function report(dept) {
+		if(dept == 'None')
+		{
+			document.querySelector('#subbdeptmntdivv').innerHTML = ''; 
+			document.querySelector('#subdeptlabel').style.display = "none";
+		}
+		else
+		{
+			$.ajax({
+				url: "/fetchsubdepartmentss",
+				method: "post",
+				data: JSON.stringify({
+				    seldept: dept,
+				}),
+				contentType: "application/json; charset=utf-8",
+				dataType: "json",
+				success: function(data) {
+					//alert(JSON.stringify(data));
+					var rowss = data.rows;
+					if(rowss.length === 0)
+					{
+						var lnkhref = document.getElementById("stid").getAttribute("href");
+						var contid = lnkhref.split("/");
+						var cpurl = "#calendarpage/"+contid[1]+"_"+dept;
+						location.replace(cpurl);	
+					}
+					else
+					{
+						document.querySelector('#subdeptlabel').style.display = "block";
+						var listItemsHtml = '';
+						listItemsHtml += ('<select id="subdepcomp" class="selcttagstyl" onchange="showcalendarr(this.value)" name="subdepcomp"><option value="None">--None--</option>');
+						for(var i=0; i < rowss.length; i++)
+						{
+						      listItemsHtml += ('<option value="'+rowss[i].sfid+'">'+rowss[i].name+'</option>');
+						}
+						listItemsHtml += ('</select><br/>');
+						document.querySelector('#subbdeptmntdivv').innerHTML = listItemsHtml; 
+					}
+				},
+				error: function(err) {
+					alert(err.responseJSON.error);
+				}
+			});
+	       }
+        }; 
+	function showcalendarr(subdept)
+	{
+		var lnkhref = document.getElementById("stid").getAttribute("href");
+		var dept = document.querySelector('#depcomp').value;
+		var contid = lnkhref.split("/");
+		var cpurl = "#calendarpage/"+contid[1]+"_"+dept+"_"+subdept;
+		location.replace(cpurl);
 	};    
     </script>
 </head>
