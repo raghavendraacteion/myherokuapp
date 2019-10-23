@@ -211,9 +211,19 @@
 		document.querySelector('#sidescetionn').style.width = tempwd+"px";
 		document.querySelector('#sidesectionshowpointerdiv').style.display = "none";
 	};
+	function gotoclndrpage()
+	{
+		var dataId = $("#cnclbtnn").attr("data-id");
+		var cpurl = "#calendarpage/"+dataId;
+		location.replace(cpurl);
+	};
 	function editdeprtmnt(){
             var dataId = $("#deptitlediv").attr("data-id");
 	    var idslst = dataId.split("_");
+	    
+	    var lsthtml = '';
+            lsthtml += ('<button type="button" id="cnclbtnn" onclick="gotoclndrpage()" class="btn btn-primary" data-id="'+dataId+'">Cancel</button>');
+	    document.querySelector('#cancelbtndiv').innerHTML = lsthtml;	
 	    $.ajax({
 			url: "/fetchdepartmentss",
 			method: "get",
