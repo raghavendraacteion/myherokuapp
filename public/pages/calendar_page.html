@@ -222,8 +222,7 @@
 	    var idslst = dataId.split("_");
 	    
 	    var lsthtml = '';
-            lsthtml += ('<button type="button" id="cnclbtnn" onclick="gotoclndrpage()" class="btn btn-primary" data-id="'+dataId+'">Cancel</button>');
-	    document.querySelector('#cancelbtndiv').innerHTML = lsthtml;	
+            lsthtml += ('<center><button type="button" id="cnclbtnn" onclick="gotoclndrpage()" class="btn btn-primary" data-id="'+dataId+'">Cancel</button></center>');
 	    $.ajax({
 			url: "/fetchdepartmentss",
 			method: "get",
@@ -246,7 +245,8 @@
 				       }
 				}
 				listItemsHtml += ('</select><br/>');
-				document.querySelector('#deptmntdivv').innerHTML = listItemsHtml;  
+				document.querySelector('#deptmntdivv').innerHTML = listItemsHtml; 
+				document.querySelector('#cancelbtndiv').innerHTML = lsthtml;
 			},
 			error: function(err) {
 				alert(err.responseJSON.error);
