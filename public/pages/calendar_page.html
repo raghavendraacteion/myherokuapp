@@ -212,8 +212,71 @@
 		document.querySelector('#sidesectionshowpointerdiv').style.display = "none";
 	};
 	function editdeprtmnt(){
-            var dataId = $("#deptitlediv").attr("data-id");		
-	    alert(dataId);	
+            var dataId = $("#deptitlediv").attr("data-id");
+	    var idslst = dataId.split("_");
+	    $.ajax({
+			url: "/fetchdepartmentss",
+			method: "get",
+			contentType: "application/json; charset=utf-8",
+			dataType: "json",
+			success: function(data) {
+				//alert(JSON.stringify(data));
+				var rowss = data.rows;
+				var listItemsHtml = '';
+				listItemsHtml += ('<select id="depcomp" class="selcttagstyl" onchange="report(this.value)" name="department"><option value="None">--None--</option>');
+				for(var i=0; i < rowss.length; i++)
+				{
+				       if(idslst[1] == rowss[i].sfid)
+				       {
+					   listItemsHtml += ('<option value="'+rowss[i].sfid+'" selected>'+rowss[i].name+'</option>');
+				       }
+				       else
+				       {
+					  listItemsHtml += ('<option value="'+rowss[i].sfid+'">'+rowss[i].name+'</option>');
+				       }
+				}
+				listItemsHtml += ('</select><br/>');
+				document.querySelector('#deptmntdivv').innerHTML = listItemsHtml;  
+			},
+			error: function(err) {
+				alert(err.responseJSON.error);
+			}
+		});
+		if(idslst.length > 2)
+		{
+			$.ajax({
+				url: "/fetchsubdepartmentss",
+				method: "post",
+				data: JSON.stringify({
+				    seldept: idslst[1],
+				}),
+				contentType: "application/json; charset=utf-8",
+				dataType: "json",
+				success: function(data) {
+					//alert(JSON.stringify(data));
+					var rowss = data.rows;
+					var listItemsHtml = '';
+					listItemsHtml += ('<select id="subdepcomp" class="selcttagstyl" onchange="showcalendarr(this.value)" name="subdepcomp"><option value="None">--None--</option>');
+					for(var i=0; i < rowss.length; i++)
+					{
+					       if(idslst[2] == rowss[i].sfid)
+					       {
+						   listItemsHtml += ('<option value="'+rowss[i].sfid+'" selected>'+rowss[i].name+'</option>');
+					       }
+					       else
+					       {
+						   listItemsHtml += ('<option value="'+rowss[i].sfid+'">'+rowss[i].name+'</option>');
+					       }
+					}
+					listItemsHtml += ('</select><br/>');
+					document.querySelector('#subbdeptmntdivv').innerHTML = listItemsHtml; 
+					
+				},
+				error: function(err) {
+					alert(err.responseJSON.error);
+				}
+			});
+		}
 	};
 	function edtsubdeprtmnt(){
 	    var dataId = $("#subdepttitlediv").attr("data-id");
@@ -286,6 +349,9 @@
 									<span class="labelclass" id="subdeptlabel">Sub-Department</span> 
 									<div id="subbdeptmntdivv">
 									</div>
+									<div style="height:3px;"></div>
+									 <div id="cancelbtndiv">
+									</div>  
 									    </td>
 								</tr>
 								<tr>
