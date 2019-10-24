@@ -123,8 +123,6 @@
 					}
 				},
 				error: function(err) {
-					//errorMessage.text(err.responseJSON.error);
-					//error.show();
 					alert(err.responseJSON.error);
 				}
 			});
@@ -133,7 +131,18 @@
 	
 	function report(dept) {
 		var subdepts = $("#subdeptdivv").data();
-		alert(JSON.stringify(subdepts));
+		var listItemsHtml = '';
+		listItemsHtml += ('<span class="labelclass">Sub-Department</span><br/><select id="subdepcomp" class="selcttagstyl" onchange="showcalendarr(this.value)" name="subdepcomp"><option value="None">--None--</option>');
+		for(var i=0; i < subdepts.length; i++)
+		{
+		      if(subdepts[i].department__c == dept)
+		      {
+			  listItemsHtml += ('<option value="'+subdepts[i].sfid+'">'+subdepts[i].name+'</option>');
+		      }
+		}
+		listItemsHtml += ('</select><br/>');
+		document.querySelector('#subdeptdivv').innerHTML = listItemsHtml; 
+		//alert(JSON.stringify(subdepts));
 	};
 	    
 	function showcalendarr(subdept)
