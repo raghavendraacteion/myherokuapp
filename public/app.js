@@ -23,7 +23,7 @@ sampleApp.config(['$routeProvider',
 		})
 	        .when('/selectdeptpage/:conid', {
 			templateUrl: 'pages/sel_dept_page.html',
-			controller: 'selectdeptpagecontroller'
+			controller: 'selectdeptpagecontroller11'
 		})
 	        .when('/calendarpage/:reqids', {
 			templateUrl: 'pages/calendar_page.html',
@@ -80,6 +80,50 @@ sampleApp.controller('selectdeptpagecontroller', function($scope, $routeParams) 
 		error: function(err) {
 			//errorMessage.text(err.responseJSON.error);
 			//error.show();
+			alert(err.responseJSON.error);
+		}
+	});
+});
+
+sampleApp.controller('selectdeptpagecontroller11', function($scope, $routeParams) {
+
+	var hmstrLink = "#home/" + $routeParams.conid;
+        var sltstrLink = "#slotbookingpage/" + $routeParams.conid;
+	document.getElementById("lgid").setAttribute("href",hmstrLink);
+	document.getElementById("hmid").setAttribute("href",hmstrLink);
+        document.getElementById("stid").setAttribute("href",sltstrLink);
+	
+	$.ajax({
+		url: "/fetchdepartmentss",
+		method: "get",
+		contentType: "application/json; charset=utf-8",
+		dataType: "json",
+		success: function(data) {
+			//alert(JSON.stringify(data));
+	         	var rowss = data.rows;
+			var listItemsHtml = '';
+			listItemsHtml += ('<span class="labelclass">Department</span><br/><select id="depcomp" class="selcttagstyl" onchange="report(this.value)" name="department"><option value="None">--None--</option>');
+			for(var i=0; i < rowss.length; i++)
+			{
+			      listItemsHtml += ('<option value="'+rowss[i].sfid+'">'+rowss[i].name+'</option>');
+			}
+			listItemsHtml += ('</select><br/>');
+			document.querySelector('#deptdivv').innerHTML = listItemsHtml;
+			$.ajax({
+				url: "/fetchallsubdepartmentss",
+				method: "get",
+				contentType: "application/json; charset=utf-8",
+				dataType: "json",
+				success: function(data1) {
+				     var subdeptrows = data1.rows;
+				     $("#subdeptdivv").data(subdeptrows);
+				},
+				error: function(err) {
+				     alert(err.responseJSON.error);
+				}
+			});
+		},
+		error: function(err) {
 			alert(err.responseJSON.error);
 		}
 	});
