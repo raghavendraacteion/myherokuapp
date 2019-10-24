@@ -130,8 +130,9 @@
         };
 	
 	function report(dept) {
-		alert(JSON.stringify(subdepts));
+		
 		var subdepts = $("#subdeptdivv").data();
+		alert(JSON.stringify(subdepts));
 		var listItemsHtml = '';
 		listItemsHtml += ('<span class="labelclass">Sub-Department</span><br/><select id="subdepcomp" class="selcttagstyl" onchange="showcalendarr(this.value)" name="subdepcomp"><option value="None">--None--</option>');
 		for(var i=0; i < subdepts.length; i++)
