@@ -78,6 +78,63 @@ app.get('/fetchdepartmentss', function(req, res) {
     });
 });
 
+app.get('/fetchallsubdepartmentss', function(req, res) {
+    pg.connect(process.env.DATABASE_URL, function (err, conn, done) {
+        // watch for any connect issues
+        if (err) console.log(err);
+		conn.query(
+			'SELECT sfid,Department__c, Name FROM salesforce.Sub_Department__c',
+			function(err, result) {
+				if (err) {
+					res.status(400).json({error: err.message});
+				}
+				else {
+					res.json(result);
+				}
+			}
+		);
+    });
+});
+
+
+app.post('/fetchappointmentbookngs', function(req, res) {
+    pg.connect(process.env.DATABASE_URL, function (err, conn, done) {
+        // watch for any connect issues
+        if (err) console.log(err);
+		conn.query(
+			'SELECT Name, Id,sfid, Department__c, Sub_Department__c, Scheduled_Start_Time__c, Status__c, Student__c FROM salesforce.Appointment_Booking__c WHERE LOWER(Student__c) = LOWER($1) ORDER BY Scheduled_Start_Time__c DESC LIMIT 25',
+			[req.body.conid.trim()],
+			function(err, result) {
+				if (err) {
+					res.status(400).json({error: err.message});
+				}
+				else {
+					res.json(result);
+				}
+			}
+		);
+    });
+});
+
+app.post('/fetchonlyslots', function(req, res) {
+    pg.connect(process.env.DATABASE_URL, function (err, conn, done) {
+        // watch for any connect issues
+        if (err) console.log(err);
+		conn.query(
+			'SELECT Name, Id,sfid, Slot_End_Time__c, Slot_Start_Time__c, Appointment_Booking__c, Status__c, Student__c FROM salesforce.Slot__c WHERE LOWER(Student__c) = LOWER($1) AND LOWER(Status__c) = LOWER($2) ORDER BY Slot_Start_Time__c DESC LIMIT 20',
+			[req.body.conid.trim(), req.body.sts.trim()],
+			function(err, result) {
+				if (err) {
+					res.status(400).json({error: err.message});
+				}
+				else {
+					res.json(result);
+					
+				}
+			}
+		);
+    });
+});
 
 app.post('/fetchsubdepartmentss', function(req, res) {
     pg.connect(process.env.DATABASE_URL, function (err, conn, done) {
@@ -135,6 +192,9 @@ app.post('/fetchsubdeptname', function(req, res) {
 		);
     });
 });
+
+
+
 
 
 app.post('/fetchslots', function(req, res) {
