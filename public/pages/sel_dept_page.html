@@ -85,7 +85,7 @@
 		var sbpurl = "#slotbookingpage/"+contid[1];
 		location.replace(sbpurl);
 	};
-	function report(dept) {
+	function report1(dept) {
 		if(dept == 'None')
 		{
 			document.querySelector('#subdeptdivv').innerHTML = '';  
@@ -130,6 +130,11 @@
 			});
 	       }
         };
+	
+	function report(dept) {
+		var subdepts = $("#subdeptdivv").data();
+		alert(subdepts);
+	};
 	    
 	function showcalendarr(subdept)
 	{
