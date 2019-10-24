@@ -19,7 +19,7 @@ sampleApp.config(['$routeProvider',
 		})
 	        .when('/slotbookingpage/:conid', {
 			templateUrl: 'pages/slot_booking_page.html',
-			controller: 'showslobookpageecontroller'
+			controller: 'showslobookpageecontroller11'
 		})
 	        .when('/selectdeptpage/:conid', {
 			templateUrl: 'pages/sel_dept_page.html',
@@ -124,6 +124,165 @@ sampleApp.controller('showslobookpageecontroller', function($scope, $routeParams
 	});
 	
 });
+
+
+sampleApp.controller('showslobookpageecontroller11', function($scope, $routeParams) {
+	var hghttt = window.screen.height;
+	var temphtt = parseInt(hghttt)-415;
+	document.querySelector('#slotsstablediv').style.height = temphtt+"px";
+	var stts = 'Confirmed';
+	var connid = $routeParams.conid;
+	var hmstrLink = "#home/" + $routeParams.conid;
+        var sltstrLink = "#slotbookingpage/" + $routeParams.conid;
+	document.getElementById("lgid").setAttribute("href",hmstrLink);
+	document.getElementById("hmid").setAttribute("href",hmstrLink);
+        document.getElementById("stid").setAttribute("href",sltstrLink);
+	$.ajax({
+		url: "/fetchonlyslots",
+		method: "post",
+		data: JSON.stringify({
+			conid: connid,
+			sts: stts,
+		}),
+		contentType: "application/json; charset=utf-8",
+		dataType: "json",
+		success: function(data) {
+	         	var sltrowss = data.rows;
+			$.ajax({
+				url: "/fetchappointmentbookngs",
+				method: "post",
+				data: JSON.stringify({
+					conid: connid,
+				}),
+				contentType: "application/json; charset=utf-8",
+				dataType: "json",
+				success: function(data1) {
+					var aptrowss = data1.rows;
+					var aptmapp = {};
+					for(var i=0; i < aptrowss.length; i++)
+					{
+					    aptmapp[aptrowss[i].sfid] = aptrowss[i];
+					}
+					$.ajax({
+						url: "/fetchdepartmentss",
+						method: "get",
+						contentType: "application/json; charset=utf-8",
+						dataType: "json",
+						success: function(data2) {
+							var deptrows = data2.rows;
+							var deptmapp = {};
+							for(var i=0; i < deptrows.length; i++)
+							{
+							    deptmapp[deptrows[i].sfid] = deptrows[i];
+							}
+							$.ajax({
+								url: "/fetchallsubdepartmentss",
+								method: "get",
+								contentType: "application/json; charset=utf-8",
+								dataType: "json",
+								success: function(data3) {
+									var subdeptrows = data3.rows;
+									var subdeptmapp = {};
+									var subdeptmapp2 = new Map();
+									for(var i=0; i < subdeptrows.length; i++)
+									{
+										subdeptmapp[subdeptrows[i].sfid] = subdeptrows[i];
+										subdeptmapp2.set(subdeptrows[i].sfid, subdeptrows[i]);
+									}
+									var listItemsHtml = '';
+									for(var i=0; i < sltrowss.length; i++)
+									{
+										var schstarttime = new Date(sltrowss[i].slot_start_time__c);
+										schstarttime.setHours( schstarttime.getHours() -7 );
+										var scstrstrng = schstarttime.toUTCString();
+										var scstrlstt = scstrstrng.split(" ");
+										var scstrlstrttmelst = scstrlstt[4].split(":");
+										var schendtime = new Date(sltrowss[i].slot_end_time__c);
+										schendtime.setHours( schendtime.getHours() -7 );
+										var schendstrng = schendtime.toUTCString();
+										var schendstrnglst = schendstrng.split(" ");
+										var schdendtmlstt = schendstrnglst[4].split(":");
+										var sttm;
+										var endtm;
+										if(parseInt(scstrlstrttmelst[0]) == 0)
+										{
+										   sttm = '12 AM';  
+										}
+										else if(parseInt(scstrlstrttmelst[0]) < 12)
+										{
+										   sttm = scstrlstrttmelst[0]+' AM';
+										}
+										else if(parseInt(scstrlstrttmelst[0]) == 12)
+										{
+										    sttm = '12 PM';
+										}
+										else
+										{
+										   var temp = parseInt(scstrlstrttmelst[0])-12;
+										   sttm = temp+' PM'
+										}
+										if(parseInt(schdendtmlstt[0]) == 0)
+										{
+										   endtm = '12 AM';  
+										}
+										else if(parseInt(schdendtmlstt[0]) < 12)
+										{
+										   endtm = schdendtmlstt[0]+' AM';
+										}
+										else if(parseInt(schdendtmlstt[0]) == 12)
+										{
+										    endtm = '12 PM';
+										}
+										else
+										{
+										    var temp = parseInt(schdendtmlstt[0])-12;
+										    endtm = temp+' PM'
+										}
+										var tttme = scstrlstt[1]+' '+scstrlstt[2]+', '+scstrlstt[3]+' '+sttm+' to '+endtm;
+										var snglitem = {};
+										var tempaptbk = aptmapp[sltrowss[i].appointment_booking__c];
+										var tempdept = deptmapp[tempaptbk.department__c];
+										var tempsltnme = sltrowss[i].name;
+										var sltnmeee = tempsltnme.split("_");
+										snglitem.sltname = sltnmeee[0];
+										snglitem.deptname = tempdept.name;
+										if(subdeptmapp2.has(tempaptbk.sub_department__c)) 
+										{
+											var tempsubdept = subdeptmapp[tempaptbk.sub_department__c];
+											snglitem.subdeptname = tempsubdept.name;
+										} 
+										else
+										{
+											snglitem.subdeptname = '-';
+										}  
+										snglitem.slttme = tttme;
+										snglitem.statuss = tempaptbk.status__c;
+										listItemsHtml += ('<tr><td style="width:20%" ><div title="">'+sltnmeee[0]+'</div></td><td style="width:20%" ><div>&nbsp;'+tttme+'</div></td><td style="width:24%" ><div title="">'+tempdept.name+'</div></td><td style="width:24%" ><div title="">'+snglitem.subdeptname+'</div></td><td style="width:12%" scope="col"><div title="">'+tempaptbk.status__c+'</div></td></tr>');
+									}
+									document.querySelector('#sltsdivv').innerHTML = listItemsHtml;  
+								},
+								error: function(err3) {
+									alert(err3.responseJSON.error);
+								}
+							});
+						},
+						error: function(err2) {
+							alert(err2.responseJSON.error);
+						}
+					});
+				},
+				error: function(err1) {
+					alert(err1.responseJSON.error);
+				}
+			});
+		},
+		error: function(err) {
+			alert(err.responseJSON.error);
+		}
+	});
+	
+});
+
 
 sampleApp.controller('calendarpagecontroller', function($scope, $routeParams) {
 	document.querySelector('#subdeptlabel').style.display = "none";
