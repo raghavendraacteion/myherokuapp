@@ -130,19 +130,23 @@
         };
 	
 	function report(dept) {
+		alert(JSON.stringify(subdepts));
 		var subdepts = $("#subdeptdivv").data();
 		var listItemsHtml = '';
 		listItemsHtml += ('<span class="labelclass">Sub-Department</span><br/><select id="subdepcomp" class="selcttagstyl" onchange="showcalendarr(this.value)" name="subdepcomp"><option value="None">--None--</option>');
 		for(var i=0; i < subdepts.length; i++)
 		{
-		      if(subdepts[i].department__c == dept)
+		      alert('hi');
+		      alert(subdepts[i].sfid);	
+		      if(subdepts[i].department__c === dept)
 		      {
+			  alert('i am in ');
 			  listItemsHtml += ('<option value="'+subdepts[i].sfid+'">'+subdepts[i].name+'</option>');
 		      }
 		}
 		listItemsHtml += ('</select><br/>');
 		document.querySelector('#subdeptdivv').innerHTML = listItemsHtml; 
-		//alert(JSON.stringify(subdepts));
+		
 	};
 	    
 	function showcalendarr(subdept)
