@@ -135,7 +135,7 @@
 		alert(JSON.stringify(subdepts));
 		var listItemsHtml = '';
 		listItemsHtml += ('<span class="labelclass">Sub-Department</span><br/><select id="subdepcomp" class="selcttagstyl" onchange="showcalendarr(this.value)" name="subdepcomp"><option value="None">--None--</option>');
-		alert(subdepts.length);
+		alert(Object.keys(subdepts));
 		for(var i=0; i < subdepts.length; i++)
 		{
 		      alert('hi');
