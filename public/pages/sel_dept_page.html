@@ -136,26 +136,19 @@
 		listItemsHtml += ('<span class="labelclass">Sub-Department</span><br/><select id="subdepcomp" class="selcttagstyl" onchange="showcalendarr(this.value)" name="subdepcomp"><option value="None">--None--</option>');
 		var objkys = Object.keys(subdepts);
 		var objvls = Object.values(subdepts);
+		var showsubdeptsec = false;
 		Object.values(subdepts).forEach(item => {
 		      if(item.department__c === dept)
 		      {
-			  alert('i am in ');
+			  showsubdeptsec = true;
 			  listItemsHtml += ('<option value="'+item.sfid+'">'+item.name+'</option>');
 		      }
 		});
-		/*for(var i=0; i < objkys.length; i++)
-		{
-		      alert(objkys[i]);
-		      alert(subdepts(JSON.stringify(objkys[i])));
-		      alert(subdepts(objkys[i]).sfid);	
-		      if(subdepts(objkys[i]).department__c === dept)
-		      {
-			  alert('i am in ');
-			  listItemsHtml += ('<option value="'+subdepts(objkys[i]).sfid+'">'+subdepts(objkys[i]).name+'</option>');
-		      }
-		}  */
 		listItemsHtml += ('</select><br/>');
-		document.querySelector('#subdeptdivv').innerHTML = listItemsHtml; 
+		if(showsubdeptsec === true)
+		{
+		     document.querySelector('#subdeptdivv').innerHTML = listItemsHtml; 
+	        }
 		
 	};
 	    
