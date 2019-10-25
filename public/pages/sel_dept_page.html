@@ -138,7 +138,10 @@
 		var objvls = Object.values(subdepts);
 		//alert();
 		Object.values(subdepts).forEach(item => {
-  			alert(item);
+			alert(JSON.stringify(item));
+  			alert(item.sfid);
+			alert(item.name);
+			alert(item.department__c);
 		});
 		/*for(var i=0; i < objkys.length; i++)
 		{
