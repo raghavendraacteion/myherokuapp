@@ -27,7 +27,7 @@ sampleApp.config(['$routeProvider',
 		})
 	        .when('/calendarpage/:reqids', {
 			templateUrl: 'pages/calendar_page.html',
-			controller: 'calendarpagecontroller'
+			controller: 'calendarpagecontroller11'
 		})
 		.when('/home/:conid', {
 			templateUrl: 'pages/home.html',
@@ -377,6 +377,70 @@ sampleApp.controller('calendarpagecontroller', function($scope, $routeParams) {
 				listItemsHtml += ('<span style="font-size:13px;font-weight:bold;">'+rowss[0].name+'</span>&nbsp;&nbsp;&nbsp;&nbsp;');
 				listItemsHtml += ('<span class="glyphicon glyphicon-pencil" style="cursor: pointer;" onclick="editdeprtmnt()" id="subdepttitlediv" data-id="'+allids+'"></span><div style="width:100%;height:1px;border-bottom: 1px #dddbda solid;"></div>');
 				document.querySelector('#subbdeptmntdivv').innerHTML = listItemsHtml;
+			},
+			error: function(err) {
+				alert(err.responseJSON.error);
+			}
+		});   
+	}
+});
+
+
+sampleApp.controller('calendarpagecontroller11', function($scope, $routeParams) {
+	document.querySelector('#subdeptlabel').style.display = "none";
+	var allids = $routeParams.reqids;
+	var idslst = allids.split("_");
+	var hmstrLink = "#home/" + idslst[0];
+        var sltstrLink = "#slotbookingpage/" + idslst[0];
+	document.getElementById("lgid").setAttribute("href",hmstrLink);
+	document.getElementById("hmid").setAttribute("href",hmstrLink);
+        document.getElementById("stid").setAttribute("href",sltstrLink);
+	
+	$.ajax({
+		url: "/fetchdepartmentss",
+		method: "get",
+		contentType: "application/json; charset=utf-8",
+		dataType: "json",
+		success: function(data) {
+			var rowss = data.rows;
+			var listItemsHtml = '';
+			for(var i=0; i < rowss.length; i++)
+			{
+			      if(rowss[i].sfid === idslst[1])
+			      {
+				   listItemsHtml += ('<span style="font-size:13px;font-weight:bold;">'+rowss[i].name+'</span>&nbsp;&nbsp;&nbsp;&nbsp;');
+			      }
+			}
+			listItemsHtml += ('<span class="glyphicon glyphicon-pencil" style="cursor: pointer;" onclick="editdeprtmnt11()" id="deptitlediv" data-id="'+allids+'"></span><div style="width:100%;height:1px;border-bottom: 1px #dddbda solid;"></div>');
+			document.querySelector('#deptmntdivv').innerHTML = listItemsHtml; 
+			$("#deptmntdivv").data(rowss);
+		},
+		error: function(err) {
+			alert(err.responseJSON.error);
+		}
+	});
+	
+	if(idslst.length > 2)
+	{
+		document.querySelector('#subdeptlabel').style.display = "block";
+		$.ajax({
+			url: "/fetchallsubdepartmentss",
+			method: "get",
+			contentType: "application/json; charset=utf-8",
+			dataType: "json",
+			success: function(data) {
+				var rowss = data.rows;
+				var listItemsHtml = '';
+				for(var i=0; i < rowss.length; i++)
+				{
+				      if(rowss[i].sfid === idslst[2])
+				      {
+					   listItemsHtml += ('<span style="font-size:13px;font-weight:bold;">'+rowss[i].name+'</span>&nbsp;&nbsp;&nbsp;&nbsp;');
+				      }
+				}
+				listItemsHtml += ('<span class="glyphicon glyphicon-pencil" style="cursor: pointer;" onclick="editdeprtmnt11()" id="subdepttitlediv" data-id="'+allids+'"></span><div style="width:100%;height:1px;border-bottom: 1px #dddbda solid;"></div>');
+				document.querySelector('#subbdeptmntdivv').innerHTML = listItemsHtml;
+				$("#subbdeptmntdivv").data(rowss);
 			},
 			error: function(err) {
 				alert(err.responseJSON.error);
