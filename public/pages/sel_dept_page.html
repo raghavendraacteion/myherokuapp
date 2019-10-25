@@ -136,12 +136,12 @@
 		listItemsHtml += ('<span class="labelclass">Sub-Department</span><br/><select id="subdepcomp" class="selcttagstyl" onchange="showcalendarr(this.value)" name="subdepcomp"><option value="None">--None--</option>');
 		var objkys = Object.keys(subdepts);
 		var objvls = Object.values(subdepts);
-		//alert();
 		Object.values(subdepts).forEach(item => {
-			alert(JSON.stringify(item));
-  			alert(item.sfid);
-			alert(item.name);
-			alert(item.department__c);
+		      if(item.department__c === dept)
+		      {
+			  alert('i am in ');
+			  listItemsHtml += ('<option value="'+item.sfid+'">'+item.name+'</option>');
+		      }
 		});
 		/*for(var i=0; i < objkys.length; i++)
 		{
