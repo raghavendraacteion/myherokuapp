@@ -530,13 +530,13 @@
 						</div>	
 						<center>
 						<br/>
-					        <div style="width:90%;margin-left:5%;padding:0.5rem;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);border-radius:0.25rem;background-color: white;">
+					        <div style="width:90%;padding:0.5rem;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);border-radius:0.25rem;background-color: white;">
 						    <center>Selected Sessions</center>
 							<div id="sltssdiv">
 							</div>
 						</div>
 						<span id="noslotslrtspan" style="font-size:13px;padding:10px;">No Counseling Sessions are selected.</span>
-						<br/>
+						<br/><br/>
 					        </center>		
 					</div>
 				</td>
@@ -568,14 +568,67 @@
 							<div class="pointer" onclick="showsidesection()">
 								Show Counseling Sessions Information
 							</div>
-						</div>
+						</div><br/>
 						<center> 
 			    				<span style="background-color:#5E986A;color:white;padding:4px;border-radius:3px;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
 								Processing....
 			    				</span>
 						</center>
 						<div style="height:20px;"></div>
-						
+						<div style="padding-left:1rem;padding-right:0.2rem;padding-bottom:1rem;padding-top:0.3rem;">
+							<div style="border-radius:0.25rem;background-color:white;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);padding:0.5rem;">
+							   <center>
+								<span class="slds-badge slds-badge_inverse">Select three preferable sessions.</span><br/>
+							   </center>
+							   <table style="margin-top:10px;width:100%;border: 1px #dddbda solid;border-bottom: 1px #AEB6BF solid;background-color:#F8F9F9;">
+							    <tr>
+								<td style="width:15%;background-color: #FFFAFA;">
+								    <center>
+									<div style="display:inline-block;padding:0.1rem;border-radius:0.25rem;background-color: #FFFAFA;">
+									    <table>
+										<tr>
+										    <td style="padding:3px;" id="prvsbtntd">
+											    <span style="float:left">
+												<div style="width:25px;height:25px;border: 1px solid #dddbda;padding:5px;padding-left:7px;background-color:white;border-radius:0.25rem;cursor:pointer;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" onclick="prviousday()">
+													<div class="triangle-left">
+													</div>
+												</div>
+											     </span>
+										    </td>
+										    <td style="padding:3px;">
+											<div style="width:25px;height:25px;border: 1px solid #dddbda;background-color:white;border-radius:0.25rem;cursor:pointer;padding-left:6px;padding-top:2px;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" onclick="refreshcalndr()">
+												<span style="font-color:#A8A8A8;color:#A8A8A8;font-size:12px;" class="glyphicon glyphicon-refresh"></span>
+											</div>
+										    </td>
+										    <td style="padding:3px;">
+											<div style="width:25px;height:25px;border: 1px solid #dddbda;padding:5px;padding-left:8px;background-color:white;border-radius:0.25rem;cursor:pointer;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" onclick="nextday()">										
+												<div class="triangle-right">
+												</div>
+											</div>
+										    </td>
+										</tr>
+									    </table>
+									</div>
+								    </center>
+								</td>
+								<td style="width:85%;">
+								    <table>
+									<tr>
+									    <td style="border-left: 1px #dddbda solid;background-color:white;padding:2px;color:white">
+										<center><span style="color:#212F3C;font-weight:bold;font-size:12px;">heading</span></center>
+									    </td>
+									</tr>
+								    </table>
+								    <table style="width:100%;">
+									<tr style="width:100%;" style="hrssstr">
+									    
+									</tr>	
+								    </table>
+								</td>
+							    </tr>
+							</table>
+						     </div>
+						</div>
 					</div>	
 				</td>
 			</tr>
