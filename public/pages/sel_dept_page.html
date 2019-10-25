@@ -130,7 +130,7 @@
         };
 	
 	function report(dept) {
-		
+		document.querySelector('#subdeptdivv').innerHTML = '';
 		var subdepts = $("#subdeptdivv").data();
 		var listItemsHtml = '';
 		listItemsHtml += ('<span class="labelclass">Sub-Department</span><br/><select id="subdepcomp" class="selcttagstyl" onchange="showcalendarr(this.value)" name="subdepcomp"><option value="None">--None--</option>');
