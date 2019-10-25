@@ -420,16 +420,15 @@ sampleApp.controller('calendarpagecontroller11', function($scope, $routeParams) 
 		}
 	});
 	
-	if(idslst.length > 2)
-	{
-		document.querySelector('#subdeptlabel').style.display = "block";
-		$.ajax({
-			url: "/fetchallsubdepartmentss",
-			method: "get",
-			contentType: "application/json; charset=utf-8",
-			dataType: "json",
-			success: function(data) {
-				var rowss = data.rows;
+	$.ajax({
+		url: "/fetchallsubdepartmentss",
+		method: "get",
+		contentType: "application/json; charset=utf-8",
+		dataType: "json",
+		success: function(data) {
+			var rowss = data.rows;
+			if(idslst.length > 2)
+			{
 				var listItemsHtml = '';
 				for(var i=0; i < rowss.length; i++)
 				{
@@ -439,14 +438,16 @@ sampleApp.controller('calendarpagecontroller11', function($scope, $routeParams) 
 				      }
 				}
 				listItemsHtml += ('<span class="glyphicon glyphicon-pencil" style="cursor: pointer;" onclick="editdeprtmnt11()" id="subdepttitlediv" data-id="'+allids+'"></span><div style="width:100%;height:1px;border-bottom: 1px #dddbda solid;"></div>');
+				document.querySelector('#subdeptlabel').style.display = "block";
 				document.querySelector('#subbdeptmntdivv').innerHTML = listItemsHtml;
-				$("#subbdeptmntdivv").data(rowss);
-			},
-			error: function(err) {
-				alert(err.responseJSON.error);
 			}
-		});   
-	}
+			$("#subbdeptmntdivv").data(rowss);
+		},
+		error: function(err) {
+			alert(err.responseJSON.error);
+		}
+	});   
+	
 });
 
 
