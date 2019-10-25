@@ -149,7 +149,13 @@
 		{
 		     document.querySelector('#subdeptdivv').innerHTML = listItemsHtml; 
 	        }
-		
+		if(showsubdeptsec === false)
+		{
+		      var lnkhref = document.getElementById("stid").getAttribute("href");
+		      var contid = lnkhref.split("/");
+		      var cpurl = "#calendarpage/"+contid[1]+"_"+dept;
+		      location.replace(cpurl);
+		}
 	};
 	    
 	function showcalendarr(subdept)
