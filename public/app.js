@@ -19,7 +19,7 @@ sampleApp.config(['$routeProvider',
 		})
 	        .when('/slotbookingpage/:conid', {
 			templateUrl: 'pages/slot_booking_page.html',
-			controller: 'showslobookpageecontroller11'
+			controller: 'showslobookpageecontroller'
 		})
 	        .when('/selectdeptpage/:conid', {
 			templateUrl: 'pages/sel_dept_page.html',
