@@ -136,14 +136,16 @@
 		var listItemsHtml = '';
 		listItemsHtml += ('<span class="labelclass">Sub-Department</span><br/><select id="subdepcomp" class="selcttagstyl" onchange="showcalendarr(this.value)" name="subdepcomp"><option value="None">--None--</option>');
 		alert(Object.keys(subdepts));
-		for(var i=0; i < subdepts.length; i++)
+		var objkys = Object.keys(subdepts);
+		alert(objkys.length);
+		for(var i=0; i < objkys.length; i++)
 		{
 		      alert('hi');
-		      alert(subdepts[i].sfid);	
-		      if(subdepts[i].department__c === dept)
+		      alert(subdepts(objkys[i]).sfid);	
+		      if(subdepts(objkys[i]).department__c === dept)
 		      {
 			  alert('i am in ');
-			  listItemsHtml += ('<option value="'+subdepts[i].sfid+'">'+subdepts[i].name+'</option>');
+			  listItemsHtml += ('<option value="'+subdepts(objkys[i]).sfid+'">'+subdepts(objkys[i]).name+'</option>');
 		      }
 		}
 		listItemsHtml += ('</select><br/>');
