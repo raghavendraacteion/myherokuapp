@@ -52,6 +52,7 @@ app.get('/fetch', function(req, res) {
 					res.status(400).json({error: err.message});
 				}
 				else {
+					done();
 					res.json(result);
 				}
 			}
@@ -71,6 +72,7 @@ app.get('/fetchdepartmentss', function(req, res) {
 					res.status(400).json({error: err.message});
 				}
 				else {
+					done();
 					res.json(result);
 				}
 			}
@@ -89,6 +91,7 @@ app.get('/fetchallsubdepartmentss', function(req, res) {
 					res.status(400).json({error: err.message});
 				}
 				else {
+					done();
 					res.json(result);
 				}
 			}
@@ -109,6 +112,7 @@ app.post('/fetchappointmentbookngs', function(req, res) {
 					res.status(400).json({error: err.message});
 				}
 				else {
+					done();
 					res.json(result);
 				}
 			}
@@ -128,6 +132,7 @@ app.post('/fetchonlyslots', function(req, res) {
 					res.status(400).json({error: err.message});
 				}
 				else {
+					done();
 					res.json(result);
 					
 				}
@@ -148,6 +153,7 @@ app.post('/fetchsubdepartmentss', function(req, res) {
 					res.status(400).json({error: err.message});
 				}
 				else {
+					done();
 					res.json(result);
 				}
 			}
@@ -167,6 +173,7 @@ app.post('/fetchdeptname', function(req, res) {
 					res.status(400).json({error: err.message});
 				}
 				else {
+					done();
 					res.json(result);
 				}
 			}
@@ -186,6 +193,7 @@ app.post('/fetchsubdeptname', function(req, res) {
 					res.status(400).json({error: err.message});
 				}
 				else {
+					done();
 					res.json(result);
 				}
 			}
@@ -329,6 +337,7 @@ app.post('/fetchslots', function(req, res) {
 															snglitem.statuss = tempaptbk.status__c;
 															rturnlstt.push(snglitem); 
 														}
+														done();
 														res.json(rturnlstt);  
 													}
 												}
@@ -357,6 +366,7 @@ app.post('/performlogin', function(req, res) {
 					res.status(400).json({error: err.message});
 				}
 				else {
+					done();
 					if(result.rowCount != 0)
 					{
 					     res.json(result);
@@ -395,13 +405,15 @@ app.post('/chngpassword', function(req, res) {
 								res.status(400).json({error: err.message});
 							}
 							else {
+								done();
 								res.json('updated');
 							}
 					     });
 					}
 					else
 					{
-					     res.json('notfound');
+					       done();
+						res.json('notfound');
 					}
 				}
 			}
@@ -436,6 +448,7 @@ app.post('/signup', function(req, res) {
 								res.status(400).json({error: err.message});
 							}
 							else {
+								done();
 								res.json('registered');
 							}
 						});
