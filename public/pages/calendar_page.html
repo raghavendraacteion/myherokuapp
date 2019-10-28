@@ -336,14 +336,17 @@
 			var listItemsHtml1 = '';
 			listItemsHtml1 += ('<select id="subdepcomp" class="selcttagstyl" onchange="showcalendarr(this.value)" name="subdepcomp"><option value="None">--None--</option>');
 			Object.values(subdeptss).forEach(item => {
-			      if(item.sfid === idslst[2])
-			      {
-				  listItemsHtml1 += ('<option value="'+item.sfid+'" selected>'+item.name+'</option>');
-			      }
-			      else
-			      {
-				   listItemsHtml1 += ('<option value="'+item.sfid+'">'+item.name+'</option>');   
-			      }
+			     if(item.department__c === idslst[1])
+			     {
+			         if(item.sfid === idslst[2])
+			         {
+				      listItemsHtml1 += ('<option value="'+item.sfid+'" selected>'+item.name+'</option>');
+			         }
+			         else
+			         {
+				       listItemsHtml1 += ('<option value="'+item.sfid+'">'+item.name+'</option>');   
+			         }
+			     }
 			});
 			listItemsHtml1 += ('</select><br/>');
 			document.querySelector('#subbdeptmntdivv').innerHTML = listItemsHtml1;	
