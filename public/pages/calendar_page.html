@@ -310,12 +310,12 @@
 	};
 	
 	function editdeprtmnt11(){
-		var dataId = $("#deptitlediv").attr("data-id");
+		//var dataId = $("#deptitlediv").attr("data-id");
 		var dataId11 = $('#maindiv').data('id');
-		alert(dataId11);
-	        var idslst = dataId.split("_");
+		//alert(dataId11);
+	        var idslst = dataId11.split("_");
 		var lsthtml = '';
-            	lsthtml += ('<center><button type="button" id="cnclbtnn" onclick="gotoclndrpage()" class="btn btn-primary" data-id="'+dataId+'">Cancel</button></center>');
+            	lsthtml += ('<center><button type="button" id="cnclbtnn" onclick="gotoclndrpage()" class="btn btn-primary" data-id="'+dataId11+'">Cancel</button></center>');
 		var deptss = $("#deptmntdivv").data();
 		var listItemsHtml = '';
 		listItemsHtml += ('<select id="depcomp" class="selcttagstyl" onchange="report11(this.value)" name="department"><option value="None">--None--</option>');
