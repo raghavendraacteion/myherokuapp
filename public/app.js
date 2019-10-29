@@ -414,6 +414,7 @@ sampleApp.controller('calendarpagecontroller11', function($scope, $routeParams) 
 			listItemsHtml += ('<span class="glyphicon glyphicon-pencil" style="cursor: pointer;" onclick="editdeprtmnt11()" id="deptitlediv" data-id="'+allids+'"></span><div style="width:100%;height:1px;border-bottom: 1px #dddbda solid;"></div>');
 			document.querySelector('#deptmntdivv').innerHTML = listItemsHtml; 
 			$("#deptmntdivv").data(rowss);
+			$("#deptmntdivv").data-id(allids);
 		},
 		error: function(err) {
 			alert(err.responseJSON.error);
