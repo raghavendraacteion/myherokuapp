@@ -395,7 +395,25 @@ sampleApp.controller('calendarpagecontroller11', function($scope, $routeParams) 
 	document.getElementById("lgid").setAttribute("href",hmstrLink);
 	document.getElementById("hmid").setAttribute("href",hmstrLink);
         document.getElementById("stid").setAttribute("href",sltstrLink);
-	
+	var d = new Date();
+	var d1 = new Date(d);
+	var diff = d.getDate() - d.getDay() + (d.getDay() === 0 ? -6 : 1);
+	var wkstrtdt = new Date(d1.setDate(diff+7));
+	var wkstrday = wkstrtdt.getDate();
+	var stdtrstrng = wkstrtdt.toString();
+	var strtdtlst = stdtrstrng.split(' ');
+	var strtstrng = strtdtlst[1]+' '+ strtdtlst[2];
+	if(strtdtlst[2].startsWith("0"))
+	{
+		strtstrng = strtdtlst[1]+' '+ strtdtlst[2].slice(1); 
+	}
+	var wkenddt = new Date(wkstrtdt.setDate(wkstrday+6));
+	var enddtstrng = wkenddt.toString();
+	var enddtlst = enddtstrng.split(' ');
+	var endstrng = enddtlst[1]+' '+ enddtlst[2];
+	var dtrangestrng = strtstrng+' to '+endstrng;
+	var ttlstrng = dtrangestrng+', '+wkenddt.getFullYear();
+	alert(ttlstrng);
 	$.ajax({
 		url: "/fetchdepartmentss",
 		method: "get",
