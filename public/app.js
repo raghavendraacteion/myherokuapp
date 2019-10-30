@@ -140,7 +140,6 @@ sampleApp.controller('showslobookpageecontroller', function($scope, $routeParams
 	document.getElementById("lgid").setAttribute("href",hmstrLink);
 	document.getElementById("hmid").setAttribute("href",hmstrLink);
         document.getElementById("stid").setAttribute("href",sltstrLink);
-	//alert('nailed it');
 	$.ajax({
 		url: "/fetchslots",
 		method: "post",
@@ -433,7 +432,8 @@ sampleApp.controller('calendarpagecontroller11', function($scope, $routeParams) 
 			dataType: "json",
 			success: function(data) {
 				appointbookings = data.rows;
-				alert(JSON.stringify(appointbookings));
+				alert('dtstrng '+dtrangestrng);
+				alert(appointbookings[0].appointment_week__c);
 			},
 			error: function(err) {
 				alert(err.responseJSON.error);
@@ -455,7 +455,8 @@ sampleApp.controller('calendarpagecontroller11', function($scope, $routeParams) 
 			dataType: "json",
 			success: function(data) {
 				appointbookings = data.rows;
-				alert(JSON.stringify(appointbookings));
+				alert('dtstrng '+dtrangestrng);
+				alert(appointbookings[0].appointment_week__c);
 			},
 			error: function(err) {
 				alert(err.responseJSON.error);
@@ -470,7 +471,6 @@ sampleApp.controller('calendarpagecontroller11', function($scope, $routeParams) 
 		dataType: "json",
 		success: function(data) {
 			oprtnghours = data.rows;
-			alert(JSON.stringify(oprtnghours));
 			$("#hrdsplytr").data(oprtnghours);
 		},
 		error: function(err) {
