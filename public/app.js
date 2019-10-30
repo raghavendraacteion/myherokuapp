@@ -410,7 +410,7 @@ sampleApp.controller('calendarpagecontroller11', function($scope, $routeParams) 
 	var enddtstrng = wkenddt.toString();
 	var enddtlst = enddtstrng.split(' ');
 	var endstrng = enddtlst[1]+' '+ enddtlst[2];
-	var dtrangestrng = strtstrng+' to '+endstrng;
+	var dtrangestrng = strtstrng+'  to  '+endstrng;
 	var ttlstrng = dtrangestrng+', '+wkenddt.getFullYear();
 	document.getElementById("clndrhedngspan").textContent= ttlstrng;
 	document.getElementById("schdlrrangehdngspn").textContent= ttlstrng;
