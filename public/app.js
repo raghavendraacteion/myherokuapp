@@ -415,7 +415,23 @@ sampleApp.controller('calendarpagecontroller11', function($scope, $routeParams) 
 	var ttlstrng = dtrangestrng+', '+wkenddt.getFullYear();
 	document.getElementById("clndrhedngspan").textContent= ttlstrng;
 	document.getElementById("schdlrrangehdngspn").textContent= ttlstrng;
-	alert(ttlstrng);
+	var oprtnghours;
+	
+	$.ajax({
+		url: "/fetchoperatinghours",
+		method: "get",
+		contentType: "application/json; charset=utf-8",
+		dataType: "json",
+		success: function(data) {
+			oprtnghours = data.rows;
+			alert(JSON.stringify(oprtnghours));
+			$("#hrdsplytr").data(oprtnghours);
+		},
+		error: function(err) {
+			alert(err.responseJSON.error);
+		}
+	});
+	
 	$.ajax({
 		url: "/fetchdepartmentss",
 		method: "get",
