@@ -426,7 +426,7 @@ sampleApp.controller('calendarpagecontroller11', function($scope, $routeParams) 
 			data: JSON.stringify({
 			    conid: idslst[0],
 			    dept: idslst[1],	
-			    seldept: idslst[2],
+			    subdept: idslst[2],
 			    dateerng: dtrangestrng,
 			}),
 			contentType: "application/json; charset=utf-8",
