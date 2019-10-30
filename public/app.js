@@ -473,7 +473,7 @@ sampleApp.controller('calendarpagecontroller11', function($scope, $routeParams) 
 			var listItemsHtml = '';
 			for (var i=0; i <= 23; i++) 
 			{
-			    if(i >= parseInt(strthrlssst[0]) || i <= parseInt(endhrlssstt[0]))
+			    if(i >= parseInt(strthrlssst[0]) && i <= parseInt(endhrlssstt[0]))
 			    {
 				if(i == 0)
 				{
