@@ -161,6 +161,65 @@ app.post('/fetchsubdepartmentss', function(req, res) {
     });
 });
 
+app.get('/fetchoperatinghours', function(req, res) {
+    pg.connect(process.env.DATABASE_URL, function (err, conn, done) {
+        // watch for any connect issues
+        if (err) console.log(err);
+		conn.query(
+			'SELECT sfid, Name, Start_Time__c, End_Time__c, Slot_Duration__c FROM salesforce.Operating_Hours__c ORDER BY CreatedDate DESC LIMIT 1',
+			function(err, result) {
+				if (err) {
+					res.status(400).json({error: err.message});
+				}
+				else {
+					done();
+					res.json(result);
+				}
+			}
+		);
+    });
+});
+
+app.post('/fetchappointmentbbokingsforclndr', function(req, res) {
+    pg.connect(process.env.DATABASE_URL, function (err, conn, done) {
+        // watch for any connect issues
+        if (err) console.log(err);
+		conn.query(
+			'SELECT Name, Id,sfid, Department__c, Sub_Department__c, Scheduled_Start_Time__c, Status__c, Student__c FROM salesforce.Appointment_Booking__c WHERE LOWER(Student__c) = LOWER($1) AND LOWER(Department__c) = LOWER($2) AND LOWER(Sub_Department__c) = LOWER($3) AND LOWER(Appointment_Week__c) = LOWER($4)',
+			[req.body.conid.trim(), req.body.dept.trim(), req.body.subdept.trim(), req.body.dateerng.trim()],
+			function(err, result) {
+				if (err) {
+					res.status(400).json({error: err.message});
+				}
+				else {
+					done();
+					res.json(result);
+				}
+			}
+		);
+    });
+});
+
+app.post('/fetchappointmentbbokingsforclndrwithoutsubdept', function(req, res) {
+    pg.connect(process.env.DATABASE_URL, function (err, conn, done) {
+        // watch for any connect issues
+        if (err) console.log(err);
+		conn.query(
+			'SELECT Name, Id,sfid, Department__c, Sub_Department__c, Scheduled_Start_Time__c, Status__c, Student__c FROM salesforce.Appointment_Booking__c WHERE LOWER(Student__c) = LOWER($1) AND LOWER(Department__c) = LOWER($2) AND LOWER(Appointment_Week__c) = LOWER($3)',
+			[req.body.conid.trim(), req.body.dept.trim(), req.body.dateerng.trim()],
+			function(err, result) {
+				if (err) {
+					res.status(400).json({error: err.message});
+				}
+				else {
+					done();
+					res.json(result);
+				}
+			}
+		);
+    });
+});
+
 app.post('/fetchdeptname', function(req, res) {
     pg.connect(process.env.DATABASE_URL, function (err, conn, done) {
         // watch for any connect issues
