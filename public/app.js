@@ -432,8 +432,7 @@ sampleApp.controller('calendarpagecontroller11', function($scope, $routeParams) 
 			dataType: "json",
 			success: function(data) {
 				appointbookings = data.rows;
-				alert('dtstrng '+dtrangestrng);
-				alert(appointbookings[0].appointment_week__c);
+				//alert(appointbookings[0].appointment_week__c);
 			},
 			error: function(err) {
 				alert(err.responseJSON.error);
@@ -455,8 +454,6 @@ sampleApp.controller('calendarpagecontroller11', function($scope, $routeParams) 
 			dataType: "json",
 			success: function(data) {
 				appointbookings = data.rows;
-				alert('dtstrng '+dtrangestrng);
-				alert(appointbookings[0].appointment_week__c);
 			},
 			error: function(err) {
 				alert(err.responseJSON.error);
@@ -471,10 +468,13 @@ sampleApp.controller('calendarpagecontroller11', function($scope, $routeParams) 
 		dataType: "json",
 		success: function(data) {
 			oprtnghours = data.rows;
-			alert(oprtnghours[0].start_time__c);
+			var strthrlssst = oprtnghours[0].start_time__c.split(":");
+			var endhrlssstt = oprtnghours[0].end_time__c.split(":");
 			var listItemsHtml = '';
 			for (var i=0; i <= 23; i++) 
 			{
+			    if(i >= parseInt(strthrlssst[0]) || i <= parseInt(endhrlssstt[0]))
+			    {
 				if(i == 0)
 				{
 					listItemsHtml += ('<td class="allhrsheadingtd"><center><span class="allhrsheadingtdtxt">' + '12' + ' AM</span></center></td>');
@@ -492,6 +492,7 @@ sampleApp.controller('calendarpagecontroller11', function($scope, $routeParams) 
 					var temp = i-12;
 					listItemsHtml += ('<td class="allhrsheadingtd"><center><span class="allhrsheadingtdtxt">' + temp + ' PM</span></center></td>');
 				}
+			    }
 			}
     			document.querySelector('#hrdsplytr').innerHTML = listItemsHtml; 
 			$("#hrdsplytr").data(oprtnghours);
