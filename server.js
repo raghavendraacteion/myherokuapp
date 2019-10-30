@@ -185,8 +185,8 @@ app.post('/fetchappointmentbbokingsforclndr', function(req, res) {
         // watch for any connect issues
         if (err) console.log(err);
 		conn.query(
-			'SELECT Name, Id,sfid,Appointment_Week__c,Notes__c,Scheduled_End_Time__c, Department__c, Sub_Department__c, Scheduled_Start_Time__c, Status__c, Student__c FROM salesforce.Appointment_Booking__c WHERE LOWER(Student__c) = LOWER($1) AND LOWER(Department__c) = LOWER($2) AND LOWER(Sub_Department__c) = LOWER($3) AND LOWER(Appointment_Week__c) = LOWER($4)',
-			[req.body.conid.trim(), req.body.dept.trim(), req.body.subdept.trim(), req.body.dateerng.trim()],
+			'SELECT Name, Id, sfid, Appointment_Week__c, Notes__c, Scheduled_End_Time__c, Department__c, Sub_Department__c, Scheduled_Start_Time__c, Status__c, Student__c FROM salesforce.Appointment_Booking__c WHERE LOWER(Student__c) = LOWER($1) AND LOWER(Department__c) = LOWER($2) AND LOWER(Sub_Department__c) = LOWER($3)',
+			[req.body.conid.trim(), req.body.dept.trim(), req.body.subdept.trim()],
 			function(err, result) {
 				if (err) {
 					res.status(400).json({error: err.message});
@@ -205,8 +205,8 @@ app.post('/fetchappointmentbbokingsforclndrwithoutsubdept', function(req, res) {
         // watch for any connect issues
         if (err) console.log(err);
 		conn.query(
-			'SELECT Name, Id,sfid,Appointment_Week__c,Notes__c,Scheduled_End_Time__c, Department__c, Sub_Department__c, Scheduled_Start_Time__c, Status__c, Student__c FROM salesforce.Appointment_Booking__c WHERE LOWER(Student__c) = LOWER($1) AND LOWER(Department__c) = LOWER($2) AND LOWER(Appointment_Week__c) = LOWER($3)',
-			[req.body.conid.trim(), req.body.dept.trim(), req.body.dateerng.trim()],
+			'SELECT Name, Id, sfid, Appointment_Week__c, Notes__c, Scheduled_End_Time__c, Department__c, Sub_Department__c, Scheduled_Start_Time__c, Status__c, Student__c FROM salesforce.Appointment_Booking__c WHERE LOWER(Student__c) = LOWER($1) AND LOWER(Department__c) = LOWER($2)',
+			[req.body.conid.trim(), req.body.dept.trim()],
 			function(err, result) {
 				if (err) {
 					res.status(400).json({error: err.message});
