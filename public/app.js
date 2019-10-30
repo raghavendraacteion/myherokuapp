@@ -416,6 +416,52 @@ sampleApp.controller('calendarpagecontroller11', function($scope, $routeParams) 
 	document.getElementById("clndrhedngspan").textContent= ttlstrng;
 	document.getElementById("schdlrrangehdngspn").textContent= ttlstrng;
 	var oprtnghours;
+	var appointbookings;
+	
+	if(idslst.length > 2)
+	{
+		$.ajax({
+			url: "/fetchappointmentbbokingsforclndr",
+			method: "post",
+			data: JSON.stringify({
+			    conid: idslst[0],
+			    dept: idslst[1],	
+			    seldept: idslst[2],
+			    dateerng: dtrangestrng,
+			}),
+			contentType: "application/json; charset=utf-8",
+			dataType: "json",
+			success: function(data) {
+				appointbookings = data.rows;
+				alert(JSON.stringify(appointbookings));
+			},
+			error: function(err) {
+				alert(err.responseJSON.error);
+			}
+		});
+	}
+	
+	if(idslst.length == 2)
+	{
+		$.ajax({
+			url: "/fetchappointmentbbokingsforclndrwithoutsubdept",
+			method: "post",
+			data: JSON.stringify({
+			    conid: idslst[0],
+			    dept: idslst[1],	
+			    dateerng: dtrangestrng,
+			}),
+			contentType: "application/json; charset=utf-8",
+			dataType: "json",
+			success: function(data) {
+				appointbookings = data.rows;
+				alert(JSON.stringify(appointbookings));
+			},
+			error: function(err) {
+				alert(err.responseJSON.error);
+			}
+		});
+	}
 	
 	$.ajax({
 		url: "/fetchoperatinghours",
